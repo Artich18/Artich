@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact ARTICH and author Jaggu Kashyap for collaborations, media requests, and reader feedback.">
+  <title>ARTICH | Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="contact">
+  <div id="header-root"></div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="section-title">Contact</h1>
+        <p class="muted">Get in touch with ARTICH and Jaggu Kashyap.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container card">
+        <p><strong>Email:</strong> contact@artich.in</p>
+        <p><strong>Website:</strong> artich.in</p>
+        <p><strong>For:</strong> Reader feedback, speaking engagements, collaborations, and publishing inquiries.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Social Profiles</h2>
+        <div id="social-profiles" class="social-grid"></div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

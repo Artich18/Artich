@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Privacy policy for ARTICH (artich.in).">
+  <title>ARTICH | Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="privacy">
+  <div id="header-root"></div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="section-title">Privacy Policy</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container card">
+        <p>At ARTICH (artich.in), we value your privacy. This website may collect minimal data such as contact details you choose to share and anonymous analytics for performance improvement.</p>
+        <p>We do not sell personal information to third parties. External links (such as Amazon, Flipkart, or social media platforms) have their own privacy policies, and we encourage you to review them.</p>
+        <p>For privacy-related questions, contact us at <strong>contact@artich.in</strong>.</p>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

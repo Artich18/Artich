@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse all ARTICH books by Jaggu Kashyap. Search by title and buy on Amazon or Flipkart.">
+  <title>ARTICH | Books</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="books">
+  <div id="header-root"></div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="section-title">Book Collection</h1>
+        <p class="muted">Explore stories from real life experiences by Jaggu Kashyap.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Search Books</h2>
+        <div class="search-box">
+          <input id="book-search" class="search-input" type="search" placeholder="Search by book title..." aria-label="Search books by title">
+        </div>
+        <div id="all-books" class="grid books-grid"></div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

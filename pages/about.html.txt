@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about author Jaggu Kashyap, the voice behind ARTICH.">
+  <title>ARTICH | About Author</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="about">
+  <div id="header-root"></div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="section-title">About Jaggu Kashyap</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container card">
+        <p>Jaggu Kashyap is the founder and author behind <strong>ARTICH</strong>, a storytelling brand focused on real-life moments, resilience, and everyday inspiration. His writing style blends emotion, authenticity, and practical wisdom to connect with readers from all backgrounds.</p>
+        <p>Through ARTICH, Jaggu explores themes of growth, relationships, memories, and modern life, aiming to make each book feel personal and memorable.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Follow ARTICH</h2>
+        <div id="social-profiles" class="social-grid"></div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
