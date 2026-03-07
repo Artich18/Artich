@@ -177,6 +177,15 @@ background-repeat:no-repeat;
 z-index:1;
 }
 
+@media (max-width:768px){
+
+.hero::before{
+
+background-size: contain;
+background-position: center top;
+
+}
+
 /* hero content */
 
 .hero-content{
@@ -370,6 +379,7 @@ box-shadow:0 10px 40px rgba(0,0,0,0.5);
     padding-top: 4.5rem;
   }
 }
+
 
 
 
