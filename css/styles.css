@@ -145,9 +145,12 @@ a {
 
 .hero {
   padding: 5.5rem 0 4.5rem;
-  background: radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.28), transparent 35%),
-    radial-gradient(circle at 90% 12%, rgba(234, 179, 8, 0.25), transparent 32%),
-    linear-gradient(130deg, #0f172a, #1e3a8a 55%, #1d4ed8);
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+url("../images/jaggu.jpg");
+
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
   color: var(--white);
 }
 
@@ -315,3 +318,4 @@ a {
     padding-top: 4.5rem;
   }
 }
+
