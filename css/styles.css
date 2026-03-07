@@ -402,8 +402,8 @@ box-shadow:0 10px 40px rgba(0,0,0,0.5);
 color:yellow;
 }
 .follow-btn{
-background:#ff3b3b;
-color:white;
+background:#f5d76e;
+color:#333;
 border:none;
 padding:6px 12px;
 border-radius:6px;
@@ -413,8 +413,9 @@ cursor:pointer;
 }
 
 .follow-btn:hover{
-background:#e60023;
+background:#eac54f;
 }
+
 
 
 
