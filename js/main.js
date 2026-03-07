@@ -9,15 +9,15 @@ const pages = [
 const books = [
   {
     title: "माँ, मैं ठीक हूँ ( Coming Soon )",
-    description: "‘माँ, मैं ठीक हूँ ?’ सिर्फ कुछ पन्नों की एक किताब नहीं है। यह असल में तुम्हारी ही कहानी है... वो कहानी, जिसका ज़िक्र तुमने आज तक किसी से नहीं किया।",
+    description: "यह सिर्फ कुछ पन्नों की एक किताब नहीं है, आपको रुलाएगी, महसूस कराएगी। यह असल में तुम्हारी ही कहानी है... जिसका ज़िक्र तुमने आज तक किसी से नहीं किया।",
     image: "images/maa main theek hun book jaggu kashyap.jpg",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
     category: "featured"
   },
   {
-    title: "Dust, Dreams & Determination",
-    description: "Real stories of resilience, family, and ambition from everyday India.",
+    title: "Pending...",
+    description: "ये सिर्फ मेरी कहानी नहीं है दोस्त, ये तुम्हारी उस खामोशी की आवाज़ है जिसे तुम चाहकर भी किसी से कह नहीं पाते। एक बार इसे पढ़ो, शायद खुद से दोबारा मुलाकात हो जाए।",
     image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=80",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
@@ -32,8 +32,8 @@ const books = [
     category: "bestseller"
   },
   {
-    title: "Monsoon Letters",
-    description: "Emotional narratives inspired by rain, nostalgia, and unspoken feelings.",
+    title: "Pending...",
+    description: "जब साथ वाले दोस्तों की कामयाबी देखकर खुशी कम और खुद की नाकामयाबी पर शर्मिंदगी ज्यादा होने लगे,तो यह बुक आपके लिए।",
     image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=700&q=80",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
 
 
 
