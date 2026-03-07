@@ -144,15 +144,14 @@ a {
 }
 
 .hero {
-  padding: 5.5rem 0 4.5rem;
-  background: 
-linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-url("../images/jaggu.jpg");
+padding: 5.5rem 0 4.5rem;
 
+background-image: url("../images/jaggu.jpg");
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
-  color: var(--white);
+
+color: var(--white);
 }
 
 .hero h1 {
@@ -319,5 +318,6 @@ background-repeat: no-repeat;
     padding-top: 4.5rem;
   }
 }
+
 
 
