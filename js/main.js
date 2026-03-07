@@ -8,9 +8,9 @@ const pages = [
 
 const books = [
   {
-    title: "Whispers of the Railway Platform",
-    description: "A heart-touching journey through small-town stations and life-defining decisions.",
-    image: "https://images.unsplash.com/photo-1524578271613-d550eacf6090?auto=format&fit=crop&w=700&q=80",
+    title: "माँ, मैं ठीक हूँ",
+    description: "‘माँ, मैं ठीक हूँ ?’ सिर्फ कुछ पन्नों की एक किताब नहीं है। यह असल में तुम्हारी ही कहानी है... वो कहानी, जिसका ज़िक्र तुमने आज तक किसी से नहीं किया।",
+    image: "images/maa main theek hun book jaggu kashyap.jpg",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
     category: "featured"
@@ -198,3 +198,4 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
