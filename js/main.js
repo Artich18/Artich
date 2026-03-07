@@ -51,7 +51,7 @@ const books = [
 
 const socialProfiles = [
 
-{ name: "Instagram", icon: "📸", url: "https://instagram.com/jaggu_kashyap", followers: "Follow" },
+{ name: "Instagram", icon: "📸", url: "https://instagram.com/jaggu__kashyap", followers: "Follow" },
 { name: "X", icon: "🐦", url: "https://twitter.com/JAGGUKASHYAP4", followers: "Follow" },
 { name: "Facebook", icon: "👍", url: "https://www.facebook.com/jaggu.kashyap.50", followers: "Follow" },
 { name: "LinkedIn", icon: "💼", url: "https://www.linkedin.com/in/jaggu-kashyap-026247268", followers: "Connect" }
@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
 
 
 
