@@ -144,14 +144,26 @@ a {
 }
 
 .hero {
-padding: 5.5rem 0 4.5rem;
 
-background-image: url("../images/jaggu.jpg");
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+
+background:
+linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.35)),
+url("../images/jaggu.jpg");
+
 background-size: cover;
-background-position: center;
+
+/* image ऊपर की तरफ focus करेगा */
+background-position: center top;
+
 background-repeat: no-repeat;
 
-color: var(--white);
+color: white;
+
 }
 
 .hero h1 {
@@ -318,6 +330,7 @@ color: var(--white);
     padding-top: 4.5rem;
   }
 }
+
 
 
 
