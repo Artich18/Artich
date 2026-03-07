@@ -8,7 +8,7 @@ const pages = [
 
 const books = [
   {
-    title: "माँ, मैं ठीक हूँ",
+    title: "माँ, मैं ठीक हूँ ( Coming Soon )",
     description: "‘माँ, मैं ठीक हूँ ?’ सिर्फ कुछ पन्नों की एक किताब नहीं है। यह असल में तुम्हारी ही कहानी है... वो कहानी, जिसका ज़िक्र तुमने आज तक किसी से नहीं किया।",
     image: "images/maa main theek hun book jaggu kashyap.jpg",
     amazon: "https://www.amazon.in",
