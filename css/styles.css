@@ -185,7 +185,7 @@ min-height:100vh;
 
 .hero::before{
 
-background-size: contain !important;
+background-size: cover;
 background-position: center top;
 
 }
@@ -399,6 +399,7 @@ box-shadow:0 10px 40px rgba(0,0,0,0.5);
     padding-top: 4.5rem;
   }
 }
+
 
 
 
