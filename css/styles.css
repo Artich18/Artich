@@ -191,6 +191,20 @@ background-position: center top;
 }
 
 }
+/* ===== MOBILE HERO TEXT FIX ===== */
+@media (max-width:768px){
+
+  .hero-content{
+    position: absolute;       /* image के ऊपर ले आएगा */
+    top: 20%;                 /* image के ऊपर vertical position, adjust कर सकते हो */
+    left: 50%;                /* horizontal center */
+    transform: translateX(-50%); /* center align */
+    z-index: 2;               /* image के ऊपर रहे */
+    text-align: center;       /* text center */
+    background: none;         /* white/gray background हट जाएगा */
+  }
+
+}
 
 /* hero content */
 
@@ -385,6 +399,7 @@ box-shadow:0 10px 40px rgba(0,0,0,0.5);
     padding-top: 4.5rem;
   }
 }
+
 
 
 
