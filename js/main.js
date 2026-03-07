@@ -157,7 +157,7 @@ function renderSocialProfiles(targetId) {
     .map(
       (profile) => `<a class="social-card" href="${profile.url}" target="_blank" rel="noopener noreferrer">
       <strong>${profile.icon} ${profile.name}</strong>
-      <span class="muted">${profile.followers || ""}</span>
+      <button class="follow-btn">Follow</button>
     </a>`
     )
     .join("");
@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
 
 
 
