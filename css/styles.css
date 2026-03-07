@@ -180,15 +180,13 @@ z-index:1;
 @media (max-width:768px){
 
 .hero{
-min-height:100vh;
-  
+min-height:auto;
+padding:120px 20px;
 }
 
 .hero::before{
-
 background-size: cover;
-background-position: center top;
-
+background-position: center;
 }
 
 }
@@ -400,6 +398,7 @@ box-shadow:0 10px 40px rgba(0,0,0,0.5);
     padding-top: 4.5rem;
   }
 }
+
 
 
 
