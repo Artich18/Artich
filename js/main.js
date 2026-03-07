@@ -50,11 +50,11 @@ const books = [
 ];
 
 const socialProfiles = [
-  { name: "Instagram", icon: "📸", url: "https://instagram.com", followers: "42K followers" },
-  { name: "Facebook", icon: "👍", url: "https://facebook.com", followers: "28K followers" },
-  { name: "LinkedIn", icon: "💼", url: "https://linkedin.com", followers: "17K followers" },
-  { name: "X (Twitter)", icon: "🐦", url: "https://x.com", followers: "13K followers" },
-  { name: "YouTube", icon: "▶️", url: "https://youtube.com", followers: "9.4K subscribers" }
+
+{ name: "Instagram", icon: "📸", url: "https://instagram.com/jaggu_kashyap", followers: "Follow" },
+{ name: "X", icon: "🐦", url: "https://twitter.com/JAGGUKASHYAP4", followers: "Follow" },
+{ name: "Facebook", icon: "👍", url: "https://www.facebook.com/jaggu.kashyap.50", followers: "Follow" },
+{ name: "LinkedIn", icon: "💼", url: "https://www.linkedin.com/in/jaggu-kashyap-026247268", followers: "Connect" }
 ];
 
 function navHref(link) {
@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
 
 
 
