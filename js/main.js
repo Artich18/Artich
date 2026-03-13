@@ -96,7 +96,6 @@ function injectLayout() {
               .join(" • ")}
           </div>
           <div class="footer-links">
-<a href="pages/privacy-policy.html">Privacy Policy</a> •
 <a href="pages/disclaimer.html">Disclaimer</a> •
 <a href="pages/copyright.html">Copyright Notice</a>
 </div>
@@ -204,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
 
 
 
