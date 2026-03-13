@@ -95,8 +95,14 @@ function injectLayout() {
               .map((p) => `<a href="${p.url}" target="_blank" rel="noopener noreferrer">${p.icon} ${p.name}</a>`)
               .join(" • ")}
           </div>
+          <div class="footer-links">
+<a href="pages/privacy-policy.html">Privacy Policy</a> •
+<a href="pages/disclaimer.html">Disclaimer</a> •
+<a href="pages/copyright.html">Copyright Notice</a>
+</div>
           <small>© ARTICH – Jaggu Kashyap | artich.in</small>
         </div>
+        
       </footer>`;
   }
 }
@@ -198,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+
 
 
 
