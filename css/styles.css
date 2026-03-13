@@ -415,6 +415,20 @@ cursor:pointer;
 .follow-btn:hover{
 background:#a8d4ff;
 }
+.footer-links{
+margin-top:10px;
+}
+
+.footer-links a{
+color:#bbb;
+text-decoration:none;
+margin:0 6px;
+font-size:14px;
+}
+
+.footer-links a:hover{
+color:#fff;
+}
 
 
 
