@@ -1,8 +1,8 @@
 const pages = [
   { label: "Home", href: "index.html", key: "home" },
-  { label: "Books", href: "pages/books.html", key: "books" },
-  { label: "About", href: "pages/about.html", key: "about" },
-  { label: "Contact", href: "pages/contact.html", key: "contact" },
+  { label: "ARTICH Books", href: "pages/books.html", key: "books" },
+  { label: "About Author Jaggu Kashyap", href: "pages/about.html", key: "about" },
+  { label: "Contact ARTICH", href: "pages/contact.html", key: "contact" },
   { label: "Privacy Policy", href: "pages/privacy.html", key: "privacy" }
 ];
 
@@ -108,8 +108,11 @@ function injectLayout() {
 
 function bookCardTemplate(book) {
   return `<article class="book-card" data-title="${book.title.toLowerCase()}">
-      <div class="book-cover"><img src="${book.image}" alt="Cover of ${book.title}" loading="lazy"></div>
-      <h3 class="book-title">${book.title}</h3>
+      <div class="book-cover"><img src="${book.image}" 
+alt="${book.title} book cover by Jaggu Kashyap – ARTICH"
+loading="lazy"></div>
+      <h3 class="book-title">
+<a href="#" title="${book.title} by Jaggu Kashyap">${book.title}</a></h3>
       <p class="book-desc">${book.description}</p>
       <div class="book-actions">
         <button class="btn btn-light like-btn" type="button">❤️ Like</button>
