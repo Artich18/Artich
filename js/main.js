@@ -96,8 +96,8 @@ function injectLayout() {
               .join(" • ")}
           </div>
           <div class="footer-links">
-<a href="/pages/disclaimer.html">Disclaimer</a> •
-<a href="/pages/copyright.html">Copyright Notice</a>
+<a href="artich/pages/disclaimer.html">Disclaimer</a> •
+<a href="artich/pages/copyright.html">Copyright Notice</a>
 </div>
           <small>© ARTICH – Jaggu Kashyap | artich.in</small>
         </div>
