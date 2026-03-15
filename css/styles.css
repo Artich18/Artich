@@ -418,7 +418,7 @@ background:#a8d4ff;
 @media (max-width:768px){
 
 .hero-content p{
-font-size:14px;
+font-size:16px !important;
 }
 
 }
