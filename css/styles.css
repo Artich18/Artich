@@ -201,9 +201,7 @@ background-position: center;
     text-align: center;       /* text center */
     background: none;         /* white/gray background हट जाएगा */
   }
-.hero-content p{
-    font-size:16px;
-  }
+
 }
 
 /* hero content */
@@ -417,7 +415,13 @@ cursor:pointer;
 .follow-btn:hover{
 background:#a8d4ff;
 }
+@media (max-width:768px){
 
+.hero-content p{
+font-size:14px;
+}
+
+}
 
 
 
