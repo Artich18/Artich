@@ -91,6 +91,10 @@ function injectLayout() {
     footerRoot.innerHTML = `
       <footer class="site-footer">
         <div class="container footer-inner">
+        <div class="footer-logo">
+<img src="${pageKey === "home" ? "images/artich-logo-jaggu-kashyap.png" : "../images/artich-logo-jaggu-kashyap.png"}" 
+alt="ARTICH logo by Jaggu Kashyap" loading="lazy">
+</div>
           <div>
             ${socialProfiles
               .map((p) => `<a href="${p.url}" target="_blank" rel="noopener noreferrer">${p.icon} ${p.name}</a>`)
