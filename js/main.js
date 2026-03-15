@@ -13,7 +13,8 @@ const books = [
     image: "/Artich/images/book-covers/maa-main-theek-hun-book-jaggu-kashyap.jpg",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
-    category: "featured"
+    category: "featured",
+    link: "/Artich/pages/books/maa-main-theek-hun.html"
   },
   {
     title: "Pending...",
