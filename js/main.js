@@ -1,15 +1,15 @@
 const pages = [
   { label: "Home", href: "index.html", key: "home" },
-  { label: "ARTICH Books", href: "pages/books.html", key: "books" },
-  { label: "About Author Jaggu Kashyap", href: "pages/about.html", key: "about" },
-  { label: "Contact ARTICH", href: "pages/contact.html", key: "contact" },
+  { label: "Books", href: "pages/books.html", key: "books" },
+  { label: "About Author", href: "pages/about.html", key: "about" },
+  { label: "Contact", href: "pages/contact.html", key: "contact" },
   { label: "Privacy Policy", href: "pages/privacy.html", key: "privacy" }
 ];
 
 const books = [
   {
     title: "माँ, मैं ठीक हूँ ( Coming Soon )",
-    description: "यह सिर्फ कुछ पन्नों की एक किताब नहीं है, आपको रुलाएगी, महसूस कराएगी। यह असल में तुम्हारी ही कहानी है... जिसका ज़िक्र तुमने आज तक किसी से नहीं किया।",
+    description: "यह सिर्फ कुछ पन्नों की एक किताब नहीं है, आपको रुलाएगी, महसूस कराएगी। यह असल में आपकी ही कहानी है... जिसका ज़िक्र आपने आज तक किसी से नहीं किया, दिल मे दबाकर रखा है।",
     image: "/Artich/images/maa-main-theek-hun-book-jaggu-kashyap.jpg",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
