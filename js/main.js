@@ -10,7 +10,7 @@ const books = [
   {
     title: "माँ, मैं ठीक हूँ ( Coming Soon )",
     description: "यह सिर्फ कुछ पन्नों की एक किताब नहीं है, आपको रुलाएगी, महसूस कराएगी। यह असल में आपकी ही कहानी है... जिसका ज़िक्र आपने आज तक किसी से नहीं किया, दिल मे दबाकर रखा है।",
-    image: "/Artich/images/book-cover/maa-main-theek-hun-book-jaggu-kashyap.jpg",
+    image: "/Artich/images/book-covers/maa-main-theek-hun-book-jaggu-kashyap.jpg",
     amazon: "https://www.amazon.in",
     flipkart: "https://www.flipkart.com",
     category: "featured"
