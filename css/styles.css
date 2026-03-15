@@ -420,7 +420,12 @@ background:#a8d4ff;
 .hero-content p{
 font-size:16px !important;
 }
-
+.footer-logo img{
+height:26px;
+width:auto;
+display:block;
+margin:0 auto;
+}
 
 
 
