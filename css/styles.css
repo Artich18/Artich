@@ -421,11 +421,10 @@ background:#a8d4ff;
 font-size:16px !important;
 }
 .footer-logo img{
-height:26px;
+height:50px;
 width:auto;
 display:block;
 margin:0 auto;
-object-fit:cover;
 }
 
 
