@@ -70,7 +70,12 @@ function injectLayout() {
     headerRoot.innerHTML = `
       <header class="site-header">
         <div class="container nav-wrap">
-          <a class="logo" href="${pageKey === "home" ? "index.html" : "../index.html"}">ARTICH</a>
+          <a class="logo" href="${pageKey === "home" ? "index.html" : "../index.html"}">
+
+<img class="mobile-logo" src="${pageKey === "home" ? "images/artich-logo-jaggu-kashyap.png" : "../images/artich-logo-jaggu-kashyap.png"}" 
+alt="ARTICH logo by Jaggu Kashyap">
+
+<span>ARTICH</span></a>
           <button class="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
           <ul class="nav-links" id="site-nav">
             ${pages
