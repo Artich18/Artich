@@ -193,6 +193,7 @@ background-position: center;
 @media (max-width:768px){
 
   .hero-content{
+    font-size:16px;
     position: absolute;       /* image के ऊपर ले आएगा */
     top: 20%;                 /* image के ऊपर vertical position, adjust कर सकते हो */
     left: 50%;                /* horizontal center */
