@@ -422,7 +422,18 @@ font-size:16px !important;
 }
 
 }
+.mobile-logo{
+height:28px;
+margin-right:8px;
+display:none;
+}
+@media (max-width:768px){
 
+.mobile-logo{
+display:inline-block;
+}
+
+}
 
 
 
