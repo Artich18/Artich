@@ -211,23 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
-// Show popup on load
-window.onload = function () {
-  setTimeout(() => {
-    document.getElementById("loginPopup").style.display = "flex";
-  }, 1000); // 1 sec delay
-};
-
-// Close popup
-function closePopup() {
-  document.getElementById("loginPopup").style.display = "none";
-}
-
-// Fake Google Email Select (Demo)
-function selectGoogleEmail() {
-  document.getElementById("email").value = "example@gmail.com";
-}
-
 
 
 
