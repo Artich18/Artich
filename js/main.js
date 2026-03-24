@@ -211,7 +211,15 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
+// Show popup when page loads
+window.onload = function () {
+  document.getElementById("welcomePopup").style.display = "block";
+};
 
+// Close popup
+function closePopup() {
+  document.getElementById("welcomePopup").style.display = "none";
+}
 
 
 
