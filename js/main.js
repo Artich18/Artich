@@ -205,19 +205,6 @@ function initBooksPage() {
     if (section) bindBookActions(section);
   });
 }
-document.addEventListener("DOMContentLoaded", function () {
-  const popup = document.getElementById("welcomePopup");
-  const closeBtn = document.querySelector(".close-btn");
-
-  // popup show
-  popup.style.display = "flex";
-
-  // close
-  closeBtn.addEventListener("click", function () {
-    popup.style.display = "none";
-  });
-});
-
 
 
 
