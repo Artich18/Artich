@@ -206,25 +206,6 @@ function initBooksPage() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  injectLayout();
-  renderSocialProfiles("social-profiles");
-  initBooksPage();
-});
-document.addEventListener("DOMContentLoaded", function () {
-  
-  const popup = document.getElementById("welcomePopup");
-  const closeBtn = document.getElementById("closeBtn");
-
-  // Show popup
-  popup.style.display = "block";
-
-  // Close popup
-  closeBtn.addEventListener("click", function () {
-    popup.style.display = "none";
-  });
-
-});
 
 
 
