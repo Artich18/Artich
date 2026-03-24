@@ -211,15 +211,20 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSocialProfiles("social-profiles");
   initBooksPage();
 });
-// Show popup when page loads
-window.onload = function () {
-  document.getElementById("welcomePopup").style.display = "block";
-};
+document.addEventListener("DOMContentLoaded", function () {
+  
+  const popup = document.getElementById("welcomePopup");
+  const closeBtn = document.getElementById("closeBtn");
 
-// Close popup
-function closePopup() {
-  document.getElementById("welcomePopup").style.display = "none";
-}
+  // Show popup
+  popup.style.display = "block";
+
+  // Close popup
+  closeBtn.addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+
+});
 
 
 
