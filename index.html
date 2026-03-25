@@ -1,111 +1,426 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ARTICH is the official website of author Jaggu Kashyap where you can explore emotional stories, fiction and non-fiction books including Maa Main Theek Hoon.">
-  <meta name="keywords" content="Artich, Jaggu Kashyap, Maa Main Theek Hoon book, Hindi stories, emotional stories">
-<meta name="author" content="Jaggu Kashyap">
-  <title>ARTICH – Official Website of Jaggu Kashyap</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/styles.css">
-  <meta property="og:title" content="ARTICH – Official Website of Jaggu Kashyap">
-<meta property="og:description" content="Explore emotional stories and books by Jaggu Kashyap including Maa Main Theek Hoon.">
-<meta property="og:image" content="https://artich18.github.io/artich/images/jaggu.jpg">
-<meta property="og:url" content="https://artich18.github.io/artich/">
-<meta property="og:type" content="website">
-</head>
-<body data-page="home">
-  <div id="header-root"></div>
-
-  <main>
-    <section class="hero">
-
-<div class="hero-content">
-<h1>ARTICH</h1>
-<p>Dive into life-changing stories, fiction, and non-fiction crafted by <span class="author-name"> Jaggu Kashyap </span>on Artich</p>
-
-<a href="./pages/books.html" class="hero-btn">Explore Books</a>
-</div>
-
-</section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Featured Books</h2>
-        <div id="featured-books" class="grid books-grid"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">New Books</h2>
-        <div id="new-books" class="grid books-grid"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Best Selling Books</h2>
-        <div id="best-books" class="grid books-grid"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container card">
-        <h2 class="section-title">About the Author – Jaggu Kashyap</h2>
-        <p class="muted">Jaggu Kashyap writes from lived experiences, translating everyday moments into stories that inspire, heal, and motivate readers across generations.</p>
-        <a class="btn btn-primary" href="pages/about.html">Read Full Story</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Social Media</h2>
-        <div id="social-profiles" class="social-grid"></div>
-      </div>
-    </section>
-  </main>
-
-  <div id="footer-root"></div>
-  <script src="js/main.js" defer></script>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Artich</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-
-<h1>Welcome to Artich</h1>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Artich</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTICH | Books by Jaggu Kashyap</title>
+    
+    <!-- Tailwind CSS (डिजाइन के लिए) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: 
+                        darkBg: '#050A1F',
+                        neonBlue: '#00F0FF',
+                        gold: '#FFD700',
+                        darkCard: '#0B132B'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome (आइकॉन्स के लिए) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- तुम्हारी कस्टम CSS -->
+    <style>
+        /* बेसिक सेटअप और फोंट्स */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            scroll-behavior: smooth;
+            background-color: #050A1F;
+            color: white;
+            overflow-x: hidden;
+        }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-  </style>
+        /* लाइट्स और ग्लो इफ़ेक्ट */
+        .gold-light-text { text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4); }
+        .blue-light-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4); }
+        .gold-glow-box { box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+        .blue-glow-box { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
 
+        /* नेटफ्लिक्स जैसा हीरो सेक्शन इफ़ेक्ट */
+        .hero-bg {
+            /* यहाँ तुम अपनी खुद की फोटो का लिंक डाल सकते हो */
+            background-image: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+        }
+
+        .netflix-overlay {
+            /* नीचे से गहरा नीला/काला और ऊपर से हल्का ट्रांसपेरेंट */
+            background: linear-gradient(to top, #050A1F 5%, rgba(5, 10, 31, 0.7) 50%, rgba(5, 10, 31, 0.4) 100%);
+        }
+
+        /* प्रोफेशनल बुक कार्ड एनिमेशन */
+        .book-card { 
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; 
+            background: linear-gradient(145deg, #0B132B, #050A1F); 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .book-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.2); 
+            border-color: #00F0FF; 
+            z-index: 10;
+        }
+
+        /* बटन और आइकन के होवर इफ़ेक्ट */
+        .btn-animate { transition: all 0.3s ease; }
+        .btn-animate:hover { transform: scale(1.03); }
+
+        .social-icon { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .social-icon:hover { 
+            transform: translateY(-8px) scale(1.1); 
+            color: #FFD700; 
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            border-color: #FFD700;
+        }
+
+        .menu-link { transition: all 0.3s ease; position: relative; }
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background-color: #00F0FF;
+            transition: width 0.3s ease;
+        }
+        .menu-link:hover::after { width: 100%; }
+        .menu-link:hover { color: #00F0FF; }
+        
+        /* कस्टम स्क्रोलबार */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050A1F; }
+        ::-webkit-scrollbar-thumb { background: #0B132B; border: 1px solid #FFD700; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FFD700; }
+    </style>
 </head>
-<body>
+<body class="antialiased">
 
-<h1>Welcome to Artich</h1>
+    <!-- ================= नेविगेशन बार (Menu) ================= -->
+    <nav class="fixed w-full z-50 top-0 bg-[#050A1F]/80 backdrop-blur-lg border-b border-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.15)] transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-4xl font-extrabold text-gold gold-light-text tracking-widest">ARTICH</a>
+                </div>
+                
+                <!-- डेस्कटॉप मेनू (JS से रेंडर होगा) -->
+                <div class="hidden md:block">
+                    <div id="desktop-menu" class="ml-10 flex items-baseline space-x-8"></div>
+                </div>
 
+                <!-- मोबाइल मेनू बटन -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="text-gold hover:text-white transition focus:outline-none text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- मोबाइल ड्रॉपडाउन (JS से रेंडर होगा) -->
+        <div id="mobileMenu" class="hidden md:hidden bg-darkCard/95 backdrop-blur-xl border-b border-gold absolute w-full">
+            <div id="mobile-menu-container" class="px-4 pt-2 pb-6 space-y-2 text-center flex flex-col"></div>
+        </div>
+    </nav>
+
+    <!-- ================= नेटफ्लिक्स स्टाइल हीरो सेक्शन ================= -->
+    <header id="home" class="relative h-screen min-h-[600px] flex flex-col items-center justify-center text-center overflow-hidden">
+        <div class="hero-bg absolute inset-0 z-0"></div>
+        <div class="netflix-overlay absolute inset-0 z-10"></div>
+        
+        <div class="relative z-20 max-w-5xl mx-auto px-4 mt-10">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 drop-shadow-2xl leading-tight">
+                Real Life,<br/> <span class="text-gold gold-light-text inline-block mt-2">Real Lessons.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto font-light">
+                "We all make mistakes, but the stories we build from them change the world. Welcome to my raw truth."
+                <br>
+                <span class="text-neonBlue blue-light-text font-semibold mt-4 inline-block text-lg">— Jaggu Kashyap</span>
+            </p>
+            
+            <a href="#featured-section" class="inline-block bg-gold text-darkBg font-bold text-lg px-8 py-4 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,215,0,0.4)]">
+                Explore The Books <i class="fa-solid fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= फीचर्ड बुक सेक्शन (1 किताब) ================= -->
+    <section class="py-24 relative z-20 bg-darkBg" id="featured-section">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-2 h-10 bg-gold gold-glow-box"></div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white gold-light-text uppercase tracking-wide">Featured Release</h2>
+            </div>
+            <div id="featured-book-container"></div>
+        </div>
+    </section>
+
+    <!-- ================= न्यू अराइवल (2 किताबें) ================= -->
+    <section class="py-24 bg-darkCard border-y border-gold/10 relative" id="new-arrivals-section">
+        <!-- बैकग्राउंड ग्लो -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-neonBlue rounded-full filter blur-[150px] opacity-10 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-2 h-10 bg-neonBlue blue-glow-box"></div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white blue-light-text uppercase tracking-wide">New Arrivals</h2>
+            </div>
+            <div id="new-arrivals-container" class="grid grid-cols-1 md:grid-cols-2 gap-10"></div>
+        </div>
+    </section>
+
+    <!-- ================= बेस्ट सेलिंग (2 किताबें) ================= -->
+    <section class="py-24 bg-darkBg relative" id="best-selling-section">
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-gold rounded-full filter blur-[150px] opacity-5 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-2 h-10 bg-gold gold-glow-box"></div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white gold-light-text uppercase tracking-wide">Best Sellers</h2>
+            </div>
+            <div id="best-selling-container" class="grid grid-cols-1 md:grid-cols-2 gap-10"></div>
+        </div>
+    </section>
+
+    <!-- ================= लेखक के बारे में (About Author) ================= -->
+    <section id="about-author" class="py-24 relative bg-darkCard border-t border-neonBlue/20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="w-48 h-48 mx-auto rounded-full overflow-hidden gold-glow-box mb-8 border-4 border-darkBg relative group">
+                <!-- ऑथर इमेज (placeholder) -->
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1287&auto=format&fit=crop" alt="Jaggu Kashyap" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+            </div>
+            <h2 class="text-5xl font-bold text-white mb-4">Jaggu <span class="text-gold gold-light-text">Kashyap</span></h2>
+            <p class="text-neonBlue font-semibold mb-8 tracking-widest uppercase">Author | Creator | Speaker</p>
+            <p class="text-gray-300 text-xl leading-relaxed mb-8 italic font-light">
+                "नमस्ते दोस्त! I am not here to give you advice. I am here to share my mistakes, the heartbreaks, and the raw truth of life. Through ARTICH, I bring you stories that will make you feel understood. Whether it's fiction or real-life lessons, every word comes straight from the heart."
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= फुटर (सोशल आइकन और पॉलिसी) ================= -->
+    <footer id="contact" class="bg-[#020510] pt-20 pb-10 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <h3 class="text-3xl font-bold text-white mb-2 tracking-widest">Join The Journey</h3>
+            <p class="text-gray-400 mb-10">Let's connect, share stories, and learn together.</p>
+            
+            <!-- सोशल आइकन (JS से रेंडर होंगे) -->
+            <div id="social-container" class="flex justify-center flex-wrap gap-6 mb-16"></div>
+            
+            <!-- पॉलिसी लिंक (JS से रेंडर होंगे) -->
+            <div id="policy-container" class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 font-medium border-t border-gray-800 pt-10"></div>
+            
+            <p class="mt-10 text-gray-600 text-sm">© <span id="year"></span> Jaggu Kashyap | ARTICH. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ================= JavaScript (कंट्रोल रूम) ================= -->
+    <script>
+        // ================= 1. तुम्हारा सारा डेटा (Central Data Control) =================
+
+        const menuItems = [
+            { name: "Home", link: "#home" },
+            { name: "Books", link: "#new-arrivals-section" },
+            { name: "About Author", link: "#about-author" },
+            { name: "Contact", link: "#contact" }
+        ];
+
+        const policyItems = [
+            { name: "Privacy Policy", link: "#" },
+            { name: "Terms & Conditions", link: "#" },
+            { name: "Copyright Policy", link: "#" },
+            { name: "Refund Policy", link: "#" }
+        ];
+
+        const socialLinks = [
+            { icon: "fa-youtube", link: "#", color: "text-red-500", hoverColor: "hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
+            { icon: "fa-instagram", link: "#", color: "text-pink-500", hoverColor: "hover:text-pink-500 hover:border-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]" },
+            { icon: "fa-x-twitter", link: "#", color: "text-white", hoverColor: "hover:text-white hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.5)]" },
+            { icon: "fa-linkedin", link: "#", color: "text-blue-500", hoverColor: "hover:text-blue-500 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" }
+        ];
+
+        // किताबों का डेटा (यहाँ तुम भविष्य में और किताबें जोड़ सकते हो)
+        const featuredBook = {
+            title: "Zindagi Ke Sabak",
+            tag: "Bestseller | Non-Fiction",
+            image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1287&auto=format&fit=crop", // Placeholder book image
+            desc: "A raw and emotional journey into the mistakes we make and the painful yet beautiful lessons they teach us. Written by Jaggu Kashyap, this book feels like a conversation with a close friend who understands your struggles.",
+            amazon: "https://amazon.in", 
+            flipkart: "https://flipkart.com"
+        };
+
+        const newArrivals = [
+            { 
+                title: "The Silent Mistake", 
+                tag: "Fiction", 
+                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1498&auto=format&fit=crop", 
+                desc: "A heartbreaking story of unsaid words and decisions that change lives forever. Sometimes the loudest screams are the ones no one hears.", 
+                amazon: "#", flipkart: "#" 
+            },
+            { 
+                title: "Pain to Power", 
+                tag: "Non-Fiction", 
+                image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1512&auto=format&fit=crop", 
+                desc: "Learn how to convert your deepest regrets into your strongest weapons. Real talk on healing and moving forward.", 
+                amazon: "#", flipkart: "#" 
+            }
+        ];
+
+        const bestSellers = [
+            { 
+                title: "Lost in the Crowd", 
+                tag: "Fiction", 
+                image: "https://images.unsplash.com/photo-1476275466078-4007374efac4?q=80&w=1287&auto=format&fit=crop", 
+                desc: "Finding yourself when everyone is watching, yet no one truly sees you. A relatable tale for today's generation.", 
+                amazon: "#", flipkart: "#" 
+            },
+            { 
+                title: "Echoes of Truth", 
+                tag: "Non-Fiction", 
+                image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1287&auto=format&fit=crop", 
+                desc: "The bitter truth nobody tells you about success, failure, and the lonely road in between.", 
+                amazon: "#", flipkart: "#" 
+            }
+        ];
+
+        // ================= 2. रेंडर करने के फंक्शन्स (UI Builders) =================
+
+        // कार्ड बनाने का डिज़ाइन
+        function createBookCard(book, isFeatured = false) {
+            const layout = isFeatured ? 'md:flex-row' : 'flex-col';
+            const imgContainer = isFeatured ? 'md:w-2/5 h-96 md:h-[500px]' : 'w-full h-80';
+            const contentContainer = isFeatured ? 'md:w-3/5 p-8 md:p-14' : 'w-full p-6 p-8';
+            const titleSize = isFeatured ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl';
+            const tagColor = book.tag.includes('Fiction') && !book.tag.includes('Non') ? 'bg-neonBlue text-darkBg' : 'bg-gold text-darkBg';
+
+            return `
+            <div class="book-card rounded-3xl overflow-hidden flex flex-col ${layout} relative ${isFeatured ? 'gold-glow-box' : ''}">
+                
+                <!-- Tag -->
+                <div class="absolute top-6 left-6 ${tagColor} text-xs md:text-sm font-bold px-4 py-1.5 rounded-full z-10 shadow-lg tracking-wider uppercase">
+                    ${book.tag}
+                </div>
+                
+                <!-- Like & Share -->
+                <div class="absolute top-6 right-6 z-10 flex gap-3">
+                    <button onclick="toggleLike(this)" class="bg-darkBg/90 backdrop-blur-sm p-3 rounded-full text-white hover:text-red-500 transition-all border border-gray-600 focus:outline-none hover:scale-110 shadow-lg">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                    </button>
+                    <button onclick="shareBook('${book.title}')" class="bg-darkBg/90 backdrop-blur-sm p-3 rounded-full text-white hover:text-gold transition-all border border-gray-600 focus:outline-none hover:scale-110 shadow-lg">
+                        <i class="fa-solid fa-share-nodes text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Image -->
+                <div class="${imgContainer} overflow-hidden relative group">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500 z-0"></div>
+                    <img src="${book.image}" alt="${book.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
+                </div>
+                
+                <!-- Content -->
+                <div class="${contentContainer} flex flex-col justify-center bg-darkCard/50 backdrop-blur-sm relative z-10">
+                    <h3 class="${titleSize} font-extrabold text-white mb-4 leading-tight">${book.title}</h3>
+                    <div class="w-16 h-1 bg-gray-700 mb-6"></div>
+                    <p class="text-gray-300 text-lg mb-8 leading-relaxed font-light">${book.desc}</p>
+                    
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                        <a href="${book.amazon}" target="_blank" class="btn-animate flex-1 bg-gold text-darkBg text-center font-bold py-3.5 px-6 rounded-xl hover:bg-yellow-400 shadow-[0_4px_15px_rgba(255,215,0,0.3)]">
+                            <i class="fa-brands fa-amazon mr-2 text-xl align-middle"></i> Buy on Amazon
+                        </a>
+                        <a href="${book.flipkart}" target="_blank" class="btn-animate flex-1 bg-blue-600 text-white text-center font-bold py-3.5 px-6 rounded-xl hover:bg-blue-500 shadow-[0_4px_15px_rgba(37,99,235,0.3)]">
+                            <i class="fa-solid fa-cart-shopping mr-2 align-middle"></i> Buy on Flipkart
+                        </a>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        // वेबसाइट लोड होते ही डेटा को HTML में इंजेक्ट करना
+        window.onload = () => {
+            // 1. मेनू रेंडर
+            const desktopMenuHTML = menuItems.map(item => `<a href="${item.link}" class="menu-link text-gray-200 hover:text-white px-2 py-2 font-semibold text-lg uppercase tracking-wide">${item.name}</a>`).join('');
+            document.getElementById('desktop-menu').innerHTML = desktopMenuHTML;
+            
+            const mobileMenuHTML = menuItems.map(item => `<a href="${item.link}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold px-4 py-3 font-medium text-lg border-b border-gray-800">${item.name}</a>`).join('');
+            document.getElementById('mobile-menu-container').innerHTML = mobileMenuHTML;
+
+            // 2. किताबें रेंडर
+            document.getElementById('featured-book-container').innerHTML = createBookCard(featuredBook, true);
+            document.getElementById('new-arrivals-container').innerHTML = newArrivals.map(b => createBookCard(b)).join('');
+            document.getElementById('best-selling-container').innerHTML = bestSellers.map(b => createBookCard(b)).join('');
+
+            // 3. सोशल और पॉलिसी रेंडर
+            document.getElementById('social-container').innerHTML = socialLinks.map(s => 
+                `<a href="${s.link}" class="social-icon text-3xl ${s.color} bg-darkBg w-16 h-16 rounded-full flex items-center justify-center border border-gray-800 shadow-lg ${s.hoverColor}">
+                    <i class="fa-brands ${s.icon}"></i>
+                </a>`
+            ).join('');
+
+            document.getElementById('policy-container').innerHTML = policyItems.map(p => 
+                `<a href="${p.link}" class="hover:text-gold transition-colors duration-300">${p.name}</a>`
+            ).join('');
+
+            // 4. साल अपडेट करना
+            document.getElementById('year').innerText = new Date().getFullYear();
+        };
+
+        // ================= 3. इंटरैक्टिव फंक्शन्स =================
+
+        // मोबाइल मेनू को खोलना/बंद करना
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // लाइक बटन
+        function toggleLike(btn) {
+            const icon = btn.querySelector('i');
+            if(icon.classList.contains('fa-regular')) {
+                icon.classList.replace('fa-regular', 'fa-solid');
+                icon.classList.replace('text-lg', 'text-xl');
+                btn.classList.add('text-red-500', 'border-red-500');
+            } else {
+                icon.classList.replace('fa-solid', 'fa-regular');
+                icon.classList.replace('text-xl', 'text-lg');
+                btn.classList.remove('text-red-500', 'border-red-500');
+            }
+        }
+
+        // शेयर बटन (कस्टम मैसेज बॉक्स)
+        function shareBook(title) {
+            // Alert की जगह एक छोटा सा कस्टम नोटिफिकेशन
+            const notif = document.createElement('div');
+            notif.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gold text-darkBg font-bold px-6 py-3 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.5)] z-50 animate-bounce transition-opacity duration-500';
+            notif.innerHTML = `<i class="fa-solid fa-check-circle mr-2"></i> दोस्त, '${title}' का लिंक कॉपी हो गया है!`;
+            document.body.appendChild(notif);
+            
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                setTimeout(() => notif.remove(), 500);
+            }, 3000);
+        }
+
+        // स्क्रॉल करने पर नेवबार का बैकग्राउंड बदलना
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-[#050A1F]/95', 'shadow-[0_5px_20px_rgba(0,240,255,0.15)]');
+                nav.classList.remove('bg-[#050A1F]/80');
+            } else {
+                nav.classList.add('bg-[#050A1F]/80');
+                nav.classList.remove('bg-[#050A1F]/95', 'shadow-[0_5px_20px_rgba(0,240,255,0.15)]');
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
