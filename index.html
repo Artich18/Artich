@@ -44,11 +44,19 @@
 
         /* नेटफ्लिक्स जैसा हीरो सेक्शन इफ़ेक्ट */
         .hero-bg {
-            /* यहाँ तुम अपनी खुद की फोटो का लिंक डाल सकते हो */
-            background-image: url('artich/images/jaggu.jpg');
+            /* यहाँ तुम्हारी असली फोटो का लिंक आ गया है दोस्त */
+            background-image: url('images/jaggu.jpg');
             background-size: cover;
             background-position: center 30%;
-            background-attachment: fixed;
+            /* Phone ke liye ise normal rakhenge taki image gayab na ho */
+            background-attachment: scroll;
+        }
+
+        /* Laptop aur badi screens par fixed effect wapas lagane ke liye */
+        @media (min-width: 768px) {
+            .hero-bg {
+                background-attachment: fixed;
+            }
         }
 
         .netflix-overlay {
