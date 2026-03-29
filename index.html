@@ -234,18 +234,78 @@ header {
 
     <!-- ================= लेखक के बारे में (About Author) ================= -->
     <section id="about-author" class="py-24 relative bg-darkCard border-t border-neonBlue/20">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="w-48 h-48 mx-auto rounded-full overflow-hidden gold-glow-box mb-8 border-4 border-darkBg relative group">
-                <!-- ऑथर इमेज (placeholder) -->
-                <img src="images/jaggu.jpg" alt="Jaggu Kashyap" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-            </div>
-            <h2 class="text-5xl font-bold text-white mb-4">Jaggu <span class="text-gold gold-light-text">Kashyap</span></h2>
-            <p class="text-neonBlue font-semibold mb-8 tracking-widest uppercase">Author | Creator | Storyteller</p>
-            <p class="text-gray-300 text-xl leading-relaxed mb-8 italic font-light">
-                "नमस्ते दोस्त! I am not here to give you advice. I am here to share my mistakes, the heartbreaks, and the raw truth of life. Through ARTICH, I bring you stories that will make you feel understood. Whether it's fiction or real-life lessons, every word comes straight from the heart."
-            </p>
+    <div class="max-w-4xl mx-auto px-4 text-center">
+
+        <!-- Author Image -->
+        <div class="w-48 h-48 mx-auto rounded-full overflow-hidden gold-glow-box mb-8 border-4 border-darkBg relative group">
+            <img src="images/jaggu.jpg" alt="Jaggu Kashyap" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
         </div>
-    </section>
+
+        <!-- Name -->
+        <h2 class="text-5xl font-bold text-white mb-4">
+            Jaggu <span class="text-gold gold-light-text">Kashyap</span>
+        </h2>
+
+        <p class="text-neonBlue font-semibold mb-8 tracking-widest uppercase">
+            Author | Creator | Storyteller
+        </p>
+
+        <!-- SHORT INTRO -->
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Jaggu Kashyap is the founder and author behind ARTICH, a storytelling brand focused on real-life moments, resilience, and everyday inspiration. His writing blends emotion, authenticity, and real experiences.
+        </p>
+
+        <!-- HIDDEN FULL STORY -->
+        <div id="fullStory" class="text-gray-400 text-lg leading-relaxed space-y-5 hidden">
+
+            <p>
+                My name is Jaggu Kashyap. I am a writer and storyteller. I do not write to create imaginary stories. I write about things that I have seen, felt, and experienced in real life.
+            </p>
+
+            <p>
+                My journey of writing did not start with books or fame. It started during a very difficult time in my life. There were days when life was so hard that I had to spend nights on the streets, on open grounds, and sometimes under the open sky.
+            </p>
+
+            <p>
+                At that time, I did not know that those struggles and experiences would one day become the source of my writing.
+            </p>
+
+            <p>
+                I believe that every person has many stories inside them. But most people never get a chance to share those stories. Pain, silence, struggles, and hopes often stay hidden inside our hearts.
+            </p>
+
+            <p>
+                Through my writing, I try to give words to those feelings that people often cannot express.
+            </p>
+
+            <p>
+                My book “Maa, Main Theek Hoon” is also inspired by real emotions. It is not just a story. It reflects the feelings of many people who hide their pain and simply say to their loved ones:
+                <br><br>
+                <strong class="text-white">“Mom, I’m fine.”</strong>
+            </p>
+
+            <p>
+                Through my stories, I hope readers feel that someone understands what they are going through.
+            </p>
+
+            <p>
+                ARTICH is not just a name for me. It is a place where real emotions, life experiences, and human stories are shared through words.
+            </p>
+
+            <p>
+                If my story or my book makes someone stop for a moment and feel something real, then my writing has done its job.
+            </p>
+
+        </div>
+
+        <!-- BUTTON -->
+        <button onclick="toggleStory()" 
+        class="mt-6 bg-gold text-darkBg px-8 py-3 rounded-full font-semibold hover:scale-105 transition">
+            Read Full Story
+        </button>
+
+    </div>
+</section>
 
     <!-- ================= फुटर (सोशल आइकन और पॉलिसी) ================= -->
     <footer id="contact" class="bg-[#020510] pt-20 pb-10 text-center relative overflow-hidden">
@@ -463,6 +523,18 @@ header {
                 nav.classList.remove('bg-[#050A1F]/95', 'shadow-[0_5px_20px_rgba(0,240,255,0.15)]');
             }
         });
+        function toggleStory() {
+    const story = document.getElementById("fullStory");
+    const btn = event.target;
+
+    if (story.classList.contains("hidden")) {
+        story.classList.remove("hidden");
+        btn.innerText = "Read Less";
+    } else {
+        story.classList.add("hidden");
+        btn.innerText = "Read Full Story";
+    }
+}
     </script>
 </body>
 </html>
