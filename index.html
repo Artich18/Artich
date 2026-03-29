@@ -665,12 +665,11 @@ We try to respond to all messages within 24–48 hours.
                 </a>`
             ).join('');
 
-            document.getElementById('policy-container').innerHTML = policyItems.map(p => 
-                `<a href="${p.link}" class="hover:text-gold transition-colors duration-300">${p.name}</a>`
-            ).join('');
-            document.getElementById("policy-container").innerHTML =
+         document.getElementById("policy-container").innerHTML =
 policyItems.map(item => 
-  `<a href="#" onclick="openPage('${item.link}')" class="menu-link">${item.name}</a>`
+  `<a href="#" onclick="event.preventDefault(); openPage('${item.link}')" class="menu-link">
+     ${item.name}
+   </a>`
 ).join("");
 
             // 4. साल अपडेट करना
@@ -735,14 +734,6 @@ policyItems.map(item =>
         story.classList.add("hidden");
         btn.innerText = "Read Full Story";
     }
-}
-        function openPage(page) {
-    const container = document.getElementById("policy-page");
-
-    container.classList.remove("hidden");
-    container.innerHTML = pages[page];
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
 }
         function openPage(page) {
     const container = document.getElementById("policy-page");
