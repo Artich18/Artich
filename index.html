@@ -141,6 +141,9 @@
 header {
     overflow-x: hidden;
 }
+        .social-icon {
+    transition: all 0.4s ease;
+}
     </style>
 </head>
 <body class="antialiased">
@@ -344,10 +347,11 @@ header {
         ];
 
         const socialLinks = [
-            { icon: "fa-youtube", link: "#", color: "text-red-500", hoverColor: "hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
-            { icon: "fa-instagram", link: "#", color: "text-pink-500", hoverColor: "hover:text-pink-500 hover:border-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]" },
-            { icon: "fa-x-twitter", link: "#", color: "text-white", hoverColor: "hover:text-white hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.5)]" },
-            { icon: "fa-linkedin", link: "#", color: "text-blue-500", hoverColor: "hover:text-blue-500 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" }
+            { icon: "fa-youtube", link: "https://www.youtube.com/@Jaggu_Kashyap", color: "text-red-500", hoverColor: "hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
+            { icon: "fa-facebook", link: "https://www.facebook.com/jaggu.kashyap.50", color: "text-red-500", hoverColor: "hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
+            { icon: "fa-instagram", link: "https://instagram.com/jaggu__kashyap", color: "text-pink-500", hoverColor: "hover:text-pink-500 hover:border-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]" },
+            { icon: "fa-twitter", link: "https://twitter.com/JAGGUKASHYAP4", color: "text-white", hoverColor: "hover:text-white hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.5)]" },
+            { icon: "fa-linkedin", link: "https://www.linkedin.com/in/jaggu-kashyap-026247268", color: "text-blue-500", hoverColor: "hover:text-blue-500 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" }
         ];
 
         // किताबों का डेटा (यहाँ तुम भविष्य में और किताबें जोड़ सकते हो)
@@ -463,7 +467,7 @@ header {
 
             // 3. सोशल और पॉलिसी रेंडर
             document.getElementById('social-container').innerHTML = socialLinks.map(s => 
-                `<a href="${s.link}" class="social-icon text-3xl ${s.color} bg-darkBg w-16 h-16 rounded-full flex items-center justify-center border border-gray-800 shadow-lg ${s.hoverColor}">
+                `<a href="${s.link}" target="_blank" rel="noopener noreferrer" class="social-icon text-3xl ${s.color} bg-darkBg w-16 h-16 rounded-full flex items-center justify-center border border-gray-800 shadow-lg ${s.hoverColor}">
                     <i class="fa-brands ${s.icon}"></i>
                 </a>`
             ).join('');
