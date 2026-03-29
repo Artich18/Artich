@@ -309,6 +309,7 @@ header {
 
     </div>
 </section>
+    <section id="policy-page" class="hidden max-w-4xl mx-auto px-4 py-20"></section>
 
     <!-- ================= फुटर (सोशल आइकन और पॉलिसी) ================= -->
     <footer id="contact" class="bg-[#020510] pt-20 pb-10 text-center relative overflow-hidden">
@@ -340,11 +341,201 @@ header {
         ];
 
         const policyItems = [
-            { name: "Privacy Policy", link: "#" },
-            { name: "Terms & Conditions", link: "#" },
-            { name: "Copyright Policy", link: "#" },
-            { name: "Refund Policy", link: "#" }
-        ];
+    { name: "Privacy Policy", link: "privacy" },
+    { name: "Terms & Conditions", link: "terms" },
+    { name: "Copyright Policy", link: "copyright" },
+    { name: "Disclaimer", link: "disclaimer" },
+    { name: "Contact", link: "contact" }
+];
+        const pages = {
+        privacy: `
+<h1 class="text-3xl font-bold mb-6">Privacy Policy</h1>
+
+<p class="text-gray-300 leading-relaxed">
+At ARTICH, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you visit our website.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">1. Information We Collect</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We may collect personal information such as your name, email address, or any details you provide when contacting us.
+</p>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We may also collect non-personal data like browser type, device information, and pages visited.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">2. How We Use Your Information</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We use your information to:
+</p>
+<ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
+<li>Improve website performance and user experience</li>
+<li>Respond to your queries and messages</li>
+<li>Analyze user behavior for better content delivery</li>
+</ul>
+
+<h2 class="text-xl font-semibold mt-8">3. Cookies</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Our website may use cookies to enhance your browsing experience. You can disable cookies in your browser settings if you prefer.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">4. Third-Party Links</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Our website may contain links to third-party platforms like Amazon or Flipkart. We are not responsible for their privacy practices or content.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">5. Data Protection</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We take reasonable steps to protect your data. However, no method of transmission over the internet is 100% secure.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">6. Your Consent</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+By using our website, you agree to this Privacy Policy.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">7. Updates</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We may update this policy from time to time. Changes will be posted on this page.
+</p>
+`,
+            terms: `
+<h1 class="text-3xl font-bold mb-6">Terms & Conditions</h1>
+
+<p class="text-gray-300 leading-relaxed">
+By using ARTICH, you agree to the following terms:
+</p>
+
+<h2 class="text-xl font-semibold mt-8">1. Use of Website</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+This website is intended for informational and promotional purposes related to books by Jaggu Kashyap.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">2. Content Ownership</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+All content on this website belongs to the owner unless stated otherwise.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">3. User Responsibility</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+You agree not to misuse the website, attempt to hack, copy, or exploit content.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">4. External Links</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We provide links to platforms like Amazon and Flipkart. We are not responsible for purchases or issues on those platforms.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">5. Limitation of Liability</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We are not responsible for any loss, damage, or issues arising from the use of this website.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">6. Changes</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We may modify these terms at any time.
+</p>
+`,
+            copyright: `
+<h1 class="text-3xl font-bold mb-6">Copyright Policy</h1>
+
+<p class="text-gray-300 leading-relaxed">
+All content on ARTICH is protected under copyright law.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">1. Ownership</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+All text, images, and design belong to Jaggu Kashyap unless stated otherwise.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">2. Restrictions</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+You may not copy, reproduce, or distribute content without permission.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">3. Fair Use</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Limited use may be allowed for personal or non-commercial purposes.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">4. Violations</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Unauthorized use may lead to legal action.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">5. Contact</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+If you believe your content is used improperly, please contact us.
+</p>
+`,
+            disclaimer: `
+<h1 class="text-3xl font-bold mb-6">Disclaimer</h1>
+
+<p class="text-gray-300 leading-relaxed">
+The information provided on ARTICH is for general informational and promotional purposes only.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">1. Content Accuracy</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We strive to keep all information accurate and up to date. However, we make no guarantees about the completeness, reliability, or accuracy of any content.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">2. Personal Opinions</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Some content, especially in non-fiction books, may reflect personal experiences, opinions, or interpretations. These are shared for informational purposes and should not be considered professional advice.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">3. External Links</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Our website may contain links to third-party platforms such as Amazon and Flipkart. We do not control or guarantee the content, services, or reliability of these external websites.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">4. No Liability</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We are not responsible for any loss, damage, or inconvenience caused by using our website or relying on any information provided here.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">5. User Responsibility</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+Users are responsible for their own decisions and actions based on the information available on this website.
+</p>
+
+<p class="text-gray-300 mt-6 leading-relaxed">
+By using this website, you agree to this disclaimer.
+</p>
+`,
+            contact: `
+<h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+
+<p class="text-gray-300 leading-relaxed">
+If you have any questions, feedback, or inquiries, feel free to reach out to us.
+We are always open to hearing from our readers and visitors.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">📩 Email</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+You can contact us via email: 
+<span class="font-semibold text-gold">jaggukashyap1995@gmail.com</span> 
+or via 
+<span class="font-semibold text-gold">LinkedIn</span>.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">💬 General Queries</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+For general questions about books, content, or the website, feel free to email us anytime.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">🤝 Business / Collaboration</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+For partnerships, collaborations, or business-related inquiries, please mention 
+<span class="font-semibold text-gold">“Business Inquiry”</span> in the subject line.
+</p>
+
+<h2 class="text-xl font-semibold mt-8">⚠️ Response Time</h2>
+<p class="text-gray-300 mt-2 leading-relaxed">
+We try to respond to all messages within 24–48 hours.
+</p>
+`,
+            };
 
         const socialLinks = [
             { icon: "fa-youtube", link: "https://www.youtube.com/@Jaggu_Kashyap", color: "text-red-500", hoverColor: "hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
@@ -475,6 +666,10 @@ header {
             document.getElementById('policy-container').innerHTML = policyItems.map(p => 
                 `<a href="${p.link}" class="hover:text-gold transition-colors duration-300">${p.name}</a>`
             ).join('');
+            document.getElementById("policy-container").innerHTML =
+policyItems.map(item => 
+  `<a href="#" onclick="openPage('${item.link}')" class="menu-link">${item.name}</a>`
+).join("");
 
             // 4. साल अपडेट करना
             document.getElementById('year').innerText = new Date().getFullYear();
@@ -538,6 +733,22 @@ header {
         story.classList.add("hidden");
         btn.innerText = "Read Full Story";
     }
+}
+        function openPage(page) {
+    const container = document.getElementById("policy-page");
+
+    container.classList.remove("hidden");
+    container.innerHTML = pages[page];
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+        function openPage(page) {
+    const container = document.getElementById("policy-page");
+
+    container.classList.remove("hidden");
+    container.innerHTML = pages[page];
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
     </script>
 </body>
