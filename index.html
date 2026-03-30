@@ -345,7 +345,14 @@ header {
             <div id="social-container" class="flex justify-center flex-wrap gap-6 mb-16"></div>
             
             <!-- पॉलिसी लिंक (JS से रेंडर होंगे) -->
-            <div id="policy-container" class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 font-medium border-t border-gray-800 pt-10"></div>
+            <div class="relative border-t border-gray-800 pt-10 overflow-hidden">
+    
+    <!-- Logo Watermark Background -->
+    <div class="absolute inset-0 bg-[url('images/artich-logo-jaggu-kashyap.png')] bg-no-repeat bg-center bg-contain opacity-[0.04] pointer-events-none"></div>
+    
+    <!-- Policy Links -->
+    <div id="policy-container" class="relative z-10 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 font-medium"></div>
+</div>
             
             <p class="mt-10 text-gray-600 text-sm">© <span id="year"></span> Jaggu Kashyap | ARTICH. All Rights Reserved.</p>
         </div>
