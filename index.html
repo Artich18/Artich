@@ -202,6 +202,17 @@ header {
                 Explore The Books <i class="fa-solid fa-arrow-down ml-2"></i>
             </a>
         </div>
+        <div class="mt-6 max-w-xl mx-auto relative">
+    <input
+        type="text"
+        id="siteSearch"
+        placeholder="Search books, pages, emotions..."
+        class="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-[#FFF4A3] shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+        oninput="searchSiteContent()"
+    >
+    
+    <div id="searchSuggestions" class="hidden absolute top-full mt-3 w-full bg-[#0B132B]/95 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden text-left shadow-2xl z-50"></div>
+</div>
     </header>
 
     <!-- ================= फीचर्ड बुक सेक्शन (1 किताब) ================= -->
@@ -597,6 +608,24 @@ We try to respond to all messages within 24–48 hours.
                 amazon: "#", flipkart: "#" 
             }
         ];
+     const searchableContent = [
+    "माँ, मैं ठीक हूँ",
+    "The Silent Mistake",
+    "Pain to Power",
+    "Lost in the Crowd",
+    "Echoes of Truth",
+    "About Author",
+    "Featured Release",
+    "New Arrivals",
+    "Best Sellers",
+    "Privacy Policy",
+    "Terms & Conditions",
+    "Copyright Policy",
+    "Disclaimer",
+    "Contact",
+    "Jaggu Kashyap",
+    "ARTICH"
+];
 
         // ================= 2. रेंडर करने के फंक्शन्स (UI Builders) =================
 
@@ -768,6 +797,67 @@ policyItems.map(item =>
     function goBackHome() {
     const container = document.getElementById("policy-page");
     container.classList.add("hidden");
+}
+        function searchSiteContent() {
+    const input = document.getElementById("siteSearch").value.toLowerCase();
+    const suggestionBox = document.getElementById("searchSuggestions");
+
+    if (!input) {
+        suggestionBox.classList.add("hidden");
+        suggestionBox.innerHTML = "";
+        return;
+    }
+
+    const matches = searchableContent.filter(item =>
+        item.toLowerCase().includes(input)
+    );
+
+    if (matches.length === 0) {
+        suggestionBox.innerHTML = `
+            <div class="px-5 py-4 text-gray-400">
+                No matching content found
+            </div>
+        `;
+        suggestionBox.classList.remove("hidden");
+        return;
+    }
+
+    suggestionBox.innerHTML = matches.map(item => `
+        <div onclick="goToSuggestion('${item}')"
+             class="px-5 py-4 hover:bg-white/10 cursor-pointer border-b border-white/5 text-white">
+            ${item}
+        </div>
+    `).join("");
+
+    suggestionBox.classList.remove("hidden");
+}
+        function goToSuggestion(item) {
+    const map = {
+        "माँ, मैं ठीक हूँ": "#featured-section",
+        "The Silent Mistake": "#new-arrivals-section",
+        "Pain to Power": "#new-arrivals-section",
+        "Lost in the Crowd": "#best-selling-section",
+        "Echoes of Truth": "#best-selling-section",
+        "About Author": "#about-author",
+        "Privacy Policy": "#contact",
+        "Terms & Conditions": "#contact",
+        "Copyright Policy": "#contact",
+        "Disclaimer": "#contact",
+        "Contact": "#contact",
+        "Jaggu Kashyap": "#about-author",
+        "ARTICH": "#home"
+    };
+
+    const section = document.querySelector(map[item]);
+
+    if (section) {
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    document.getElementById("searchSuggestions").classList.add("hidden");
+    document.getElementById("siteSearch").value = item;
 }
     </script>
 </body>
