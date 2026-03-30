@@ -742,9 +742,8 @@ policyItems.map(item =>
     const content = document.getElementById("policy-content");
 
     container.classList.remove("hidden");
-       setTimeout(() => {
-    container.classList.add("opacity-100");
-}, 10);
+    container.classList.remove("opacity-0");
+
     content.innerHTML = `
         <button onclick="goBackHome()" class="mb-8 bg-gold text-darkBg px-6 py-2 rounded-full font-semibold hover:scale-105 transition">
             ← Back to Home
@@ -752,8 +751,15 @@ policyItems.map(item =>
         ${pages[page]}
     `;
 
-    container.scrollTop = 0;
-}    
+    setTimeout(() => {
+        container.classList.add("opacity-100");
+    }, 10);
+
+    container.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
     function goBackHome() {
     const container = document.getElementById("policy-page");
     container.classList.add("hidden");
