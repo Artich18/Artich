@@ -735,13 +735,13 @@ policyItems.map(item =>
         btn.innerText = "Read Full Story";
     }
 }
-        function openPage(page) {
+   function openPage(page) {
     const container = document.getElementById("policy-page");
 
     container.classList.remove("hidden");
     container.innerHTML = pages[page];
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
 }
     </script>
 </body>
