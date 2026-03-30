@@ -202,16 +202,18 @@ header {
                 Explore The Books <i class="fa-solid fa-arrow-down ml-2"></i>
             </a>
         </div>
-        <div class="mt-6 max-w-xl mx-auto relative">
+        <div class="mt-8 max-w-2xl mx-auto relative z-30">
     <input
         type="text"
         id="siteSearch"
         placeholder="Search books, pages, emotions..."
-        class="w-full px-6 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:border-[#FFF4A3] shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+        class="w-full px-6 py-4 rounded-full bg-[#0B132B]/80 backdrop-blur-xl border border-[#FFF4A3]/30 text-white placeholder-gray-300 focus:outline-none focus:border-[#FFF4A3] shadow-[0_8px_30px_rgba(0,0,0,0.45)] relative z-30"
         oninput="searchSiteContent()"
     >
-    
-    <div id="searchSuggestions" class="hidden absolute top-full mt-3 w-full bg-[#0B132B]/95 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden text-left shadow-2xl z-50"></div>
+
+    <div id="searchSuggestions"
+         class="hidden absolute left-0 top-full mt-3 w-full bg-[#0B132B]/95 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden text-left shadow-2xl z-50">
+    </div>
 </div>
     </header>
 
