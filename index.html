@@ -738,10 +738,42 @@ policyItems.map(item =>
    function openPage(page) {
     const container = document.getElementById("policy-page");
 
-    container.classList.remove("hidden");
-    container.innerHTML = pages[page];
+    // 🔥 पूरी main site hide
+    document.querySelector("nav").style.display = "none";
+    document.querySelectorAll("section").forEach(sec => {
+        if (sec.id !== "policy-page") {
+            sec.style.display = "none";
+        }
+    });
+    document.querySelector("footer").style.display = "none";
 
-    container.scrollIntoView({ behavior: "smooth", block: "start" });
+    // 🔥 सिर्फ policy page show
+    container.classList.remove("hidden");
+    container.style.display = "block";
+    container.innerHTML = `
+        <button onclick="goBackHome()" class="mb-8 bg-gold text-darkBg px-6 py-2 rounded-full font-semibold hover:scale-105 transition">
+            ← Back to Home
+        </button>
+        ${pages[page]}
+    `;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+        function goBackHome() {
+    // 🔥 सब वापस show
+    document.querySelector("nav").style.display = "block";
+    document.querySelectorAll("section").forEach(sec => {
+        sec.style.display = "block";
+    });
+    document.querySelector("footer").style.display = "block";
+
+    // 🔥 policy page hide
+    const container = document.getElementById("policy-page");
+    container.classList.add("hidden");
+    container.style.display = "none";
+
+    // 🔥 smooth back to footer
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 }
     </script>
 </body>
