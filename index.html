@@ -969,6 +969,8 @@ const db = getFirestore(app);
 window.startStorySlider = function () {
     const slider = document.getElementById("storiesSlider");
     const cards = slider.children;
+    let startX = 0;
+let isDragging = false;
 
     if (!cards.length) return;
 
@@ -977,6 +979,27 @@ window.startStorySlider = function () {
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }, 4000);
 };
+        slider.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+slider.addEventListener("touchmove", e => {
+    if (!isDragging) return;
+    const moveX = e.touches[0].clientX;
+    const diff = startX - moveX;
+
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            currentSlide = (currentSlide + 1) % cards.length;
+        } else {
+            currentSlide = (currentSlide - 1 + cards.length) % cards.length;
+        }
+
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        isDragging = false;
+    }
+});
 async function loadStories() {
     const slider = document.getElementById("storiesSlider");
 
@@ -1062,6 +1085,10 @@ window.submitStory = async function () {
         <p class="text-gray-300 leading-relaxed mb-6">${data.story}</p>
         <p class="text-gold font-semibold">सीख:</p>
         <p class="text-gray-400">${data.learning}</p>
+        <textarea autofocus
+        placeholder="अपना कमेंट लिखो..."
+        class="w-full mt-4 px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400"></textarea>
+        <button>Post Comment</button>
     `;
 
     document.getElementById("fullStoryModal").classList.remove("hidden");
@@ -1072,15 +1099,19 @@ window.closeFullStory = function() {
 }
     loadStories();
         window.likeStory = function(id) {
-    alert("❤️ Story liked");
+    event.target.innerText = "💖 Liked";
 };
 
 window.commentStory = function(id) {
-    alert("💬 Comment feature coming soon");
+    openFullStory(id);
 };
 
 window.shareStory = function(id) {
-    alert("🔗 Story link shared");
+    navigator.share({
+   title: "ARTICH Story",
+   text: "यह कहानी जरूर पढ़ो",
+   url: window.location.href
+})
 };
 </script>
     <div id="storyModal" class="hidden fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
