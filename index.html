@@ -203,9 +203,7 @@ header {
                     <a href="#home" class="text-4xl font-extrabold tracking-widest text-[#FFF4A3] drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]">
   ARTICH
 </a>
-    <button onclick="toggleNavbarSearch()" class="text-white hover:text-gold text-lg transition">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+   
     </div>
                 
                 <!-- डेस्कटॉप मेनू (JS से रेंडर होगा) -->
@@ -219,19 +217,7 @@ header {
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
-                <div id="navbarSearch" class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50">
-    <input
-        id="siteSearch"
-        type="text"
-        oninput="searchSiteContent()"
-        onkeypress="if(event.key==='Enter') searchSiteContent()"
-        placeholder="Search..."
-        class="w-64 px-5 py-3 rounded-full bg-[#111827] border border-white/10 text-white placeholder-gray-400 shadow-2xl outline-none"
-    />
-
-    <div id="searchSuggestions"
-         class="hidden absolute top-full left-0 w-full mt-2 bg-[#111827] rounded-2xl overflow-hidden shadow-2xl">
-    </div>
+        
 </div>
 
         <!-- मोबाइल ड्रॉपडाउन (JS से रेंडर होगा) -->
