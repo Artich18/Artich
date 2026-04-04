@@ -970,7 +970,7 @@ window.startStorySlider = function () {
     const slider = document.getElementById("storiesSlider");
     const cards = slider.children;
     let startX = 0;
-let isDragging = false;
+    let isDragging = false;
 
     if (!cards.length) return;
 
@@ -978,7 +978,6 @@ let isDragging = false;
         currentSlide = (currentSlide + 1) % cards.length;
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }, 4000);
-};
 slider.addEventListener("touchstart", e => {
     startX = e.touches[0].clientX;
     isDragging = true;
