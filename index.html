@@ -372,36 +372,6 @@ header {
 
     </div>
 </section>
-    <section id="share-story" class="py-24 bg-darkBg">
-    <div class="max-w-3xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-white mb-4 text-center">
-            Share Your Story
-        </h2>
-
-        <p class="text-gray-300 text-center mb-10">
-            अपनी गलती, उससे मिली सीख और दिल की सच्चाई हमारे साथ शेयर करें।
-        </p>
-
-        <div class="space-y-6">
-            <input type="text" id="storyTitle"
-                placeholder="अपनी कहानी का टाइटल"
-                class="w-full px-5 py-4 rounded-xl bg-darkCard border border-white/10 text-white">
-
-            <textarea id="storyText" rows="6"
-                placeholder="अपनी कहानी लिखें..."
-                class="w-full px-5 py-4 rounded-xl bg-darkCard border border-white/10 text-white"></textarea>
-
-            <textarea id="storyLearning" rows="4"
-                placeholder="इस गलती से आपने क्या सीखा?"
-                class="w-full px-5 py-4 rounded-xl bg-darkCard border border-white/10 text-white"></textarea>
-
-            <button onclick="submitStory()"
-                class="w-full bg-gold text-darkBg font-bold py-4 rounded-xl hover:bg-yellow-400 transition">
-                Submit Your Story
-            </button>
-        </div>
-    </div>
-</section>
    <section id="policy-page" class="hidden fixed inset-0 z-[9999] bg-[#050A1F] overflow-y-auto px-4 py-20">
     <div id="policy-content" class="max-w-4xl mx-auto"></div>
 </section>
@@ -941,6 +911,13 @@ policyItems.map(item =>
     document.getElementById("searchSuggestions").classList.add("hidden");
     document.getElementById("siteSearch").value = item;
 }
+        function openStoryModal() {
+    document.getElementById("storyModal").classList.remove("hidden");
+}
+
+function closeStoryModal() {
+    document.getElementById("storyModal").classList.add("hidden");
+}
     </script>
     <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
@@ -994,5 +971,36 @@ window.submitStory = async function () {
     }
 };
 </script>
+    <div id="storyModal" class="hidden fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
+    <div class="w-full max-w-2xl bg-darkCard rounded-3xl p-6 relative">
+        
+        <button onclick="closeStoryModal()" class="absolute top-4 right-4 text-white text-2xl">
+            ✕
+        </button>
+
+        <h2 class="text-3xl font-bold text-white mb-4 text-center">
+            Share Your Story
+        </h2>
+
+        <div class="space-y-5">
+            <input type="text" id="storyTitle"
+                placeholder="अपनी कहानी का टाइटल"
+                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400 focus:outline-none">
+
+            <textarea id="storyText" rows="5"
+                placeholder="अपनी कहानी लिखें..."
+                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400 focus:outline-none"></textarea>
+
+            <textarea id="storyLearning" rows="4"
+                placeholder="इस गलती से आपने क्या सीखा?"
+                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400 focus:outline-none"></textarea>
+
+            <button onclick="submitStory()"
+                class="w-full bg-gold text-darkBg font-bold py-4 rounded-xl hover:bg-yellow-400 transition">
+                Submit Your Story
+            </button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
