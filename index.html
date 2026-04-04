@@ -184,6 +184,13 @@ header {
 @keyframes spinGlow {
     100% { transform: rotate(360deg); }
 }
+        .story-card {
+    min-width: 100%;
+    border-radius: 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, #1e3a8a, #7c3aed, #db2777);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
     </style>
 </head>
 <body class="antialiased">
@@ -372,6 +379,19 @@ header {
 
     </div>
 </section>
+    <section id="community-stories" class="py-24 bg-darkBg overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white text-center mb-12">
+            Community Stories
+        </h2>
+
+        <div class="relative">
+            <div id="storiesSlider" class="flex gap-6 transition-transform duration-700 ease-in-out">
+                <!-- Firebase stories yahan aayengi -->
+            </div>
+        </div>
+    </div>
+</section>
    <section id="policy-page" class="hidden fixed inset-0 z-[9999] bg-[#050A1F] overflow-y-auto px-4 py-20">
     <div id="policy-content" class="max-w-4xl mx-auto"></div>
 </section>
@@ -407,6 +427,7 @@ header {
 
         const menuItems = [
             { name: "Home", link: "#home" },
+            { name: "Community Stories", link: "#community-stories" },
             { name: "Books", link: "#new-arrivals-section" },
             { name: "About Author", link: "#about-author" },
             { name: "Contact", link: "#contact" }
@@ -925,7 +946,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-  serverTimestamp
+  serverTimestamp,
+  getDocs,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -939,7 +963,46 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+async function loadStories() {
+    const slider = document.getElementById("storiesSlider");
 
+    const q = query(
+        collection(db, "communityStories"),
+        orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
+
+    slider.innerHTML = snapshot.docs.map(doc => {
+        const data = doc.data();
+
+        return `
+            <div class="story-card cursor-pointer" onclick="openFullStory('${doc.id}')">
+                <h3 class="text-2xl font-bold text-white mb-3">
+                    ${data.title}
+                </h3>
+
+                <p class="text-gray-100 mb-4 leading-relaxed">
+                    ${data.story.substring(0, 140)}...
+                </p>
+
+                <div class="border-t border-white/20 pt-4">
+                    <p class="text-yellow-300 font-semibold mb-3">
+                        सीख: ${data.learning}
+                    </p>
+
+                    <div class="flex gap-6 text-white text-lg">
+                        <button>❤️ Like</button>
+                        <button>💬 Comment</button>
+                        <button>🔗 Share</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join("");
+
+    startStorySlider();
+}
 window.submitStory = async function () {
     const title = document.getElementById("storyTitle").value.trim();
     const story = document.getElementById("storyText").value.trim();
@@ -960,6 +1023,8 @@ window.submitStory = async function () {
         });
 
         alert("तुम्हारी कहानी ARTICH तक पहुँच गई ✨");
+        loadStories();
+        closeStoryModal();
 
         document.getElementById("storyTitle").value = "";
         document.getElementById("storyText").value = "";
@@ -1002,5 +1067,32 @@ window.submitStory = async function () {
         </div>
     </div>
 </div>
+    <div id="fullStoryModal" class="hidden fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center px-4">
+    <div class="max-w-2xl w-full bg-darkCard rounded-3xl p-6 relative">
+        <button onclick="closeFullStory()" class="absolute top-4 right-4 text-white text-2xl">✕</button>
+        <div id="fullStoryContent"></div>
+    </div>
+</div>
+    window.openFullStory = async function(id) {
+    const snapshot = await getDocs(collection(db, "communityStories"));
+    const storyDoc = snapshot.docs.find(doc => doc.id === id);
+
+    if (!storyDoc) return;
+
+    const data = storyDoc.data();
+
+    document.getElementById("fullStoryContent").innerHTML = `
+        <h2 class="text-3xl font-bold text-white mb-4">${data.title}</h2>
+        <p class="text-gray-300 leading-relaxed mb-6">${data.story}</p>
+        <p class="text-gold font-semibold">सीख:</p>
+        <p class="text-gray-400">${data.learning}</p>
+    `;
+
+    document.getElementById("fullStoryModal").classList.remove("hidden");
+};
+
+function closeFullStory() {
+    document.getElementById("fullStoryModal").classList.add("hidden");
+}
 </body>
 </html>
