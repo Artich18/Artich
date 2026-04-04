@@ -251,6 +251,19 @@ header {
     <i class="fa-solid fa-upload"></i>
     Upload Your Story
 </button>
+      let currentSlide = 0;
+
+function startStorySlider() {
+    const slider = document.getElementById("storiesSlider");
+    const cards = slider?.children;
+
+    if (!cards || !cards.length) return;
+
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % cards.length;
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 4000);
+}      
         </div>
         <div class="mt-8 max-w-2xl mx-auto relative z-30">
     <input
