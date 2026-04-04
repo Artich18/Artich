@@ -1081,13 +1081,15 @@ window.submitStory = async function () {
     const data = storyDoc.data();
 
     document.getElementById("fullStoryContent").innerHTML = `
-        <h2 class="text-3xl font-bold text-white mb-4">${data.title}</h2>
-        <p class="text-gray-300 leading-relaxed mb-6">${data.story}</p>
-        <p class="text-gold font-semibold">सीख:</p>
-        <p class="text-gray-400">${data.learning}</p>
-        <textarea autofocus
-        <textarea autofocus placeholder="अपना कमेंट लिखो..."
-    `;
+    <h2 class="text-3xl font-bold text-white mb-4">${data.title}</h2>
+    <p class="text-gray-300 leading-relaxed mb-6">${data.story}</p>
+    <p class="text-gold font-semibold">सीख:</p>
+    <p class="text-gray-400 mb-6">${data.learning}</p>
+
+    <textarea autofocus
+        placeholder="अपना कमेंट लिखो..."
+        class="w-full mt-4 px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400"></textarea>
+`;
 
     document.getElementById("fullStoryModal").classList.remove("hidden");
 };
