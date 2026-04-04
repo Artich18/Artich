@@ -146,6 +146,44 @@ header {
         .social-icon {
     transition: all 0.4s ease;
 }
+        .story-upload-btn {
+    background: rgba(11, 19, 43, 0.9);
+    border: 2px solid transparent;
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    transition: transform 0.3s ease;
+}
+
+.story-upload-btn::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 9999px;
+    background: conic-gradient(
+        from 0deg,
+        #ff0080,
+        #00f0ff,
+        #ffd700,
+        #8b5cf6,
+        #ff0080
+    );
+    z-index: -2;
+    animation: spinGlow 3s linear infinite;
+}
+
+.story-upload-btn::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 9999px;
+    background: rgba(11, 19, 43, 0.95);
+    z-index: -1;
+}
+
+@keyframes spinGlow {
+    100% { transform: rotate(360deg); }
+}
     </style>
 </head>
 <body class="antialiased">
@@ -201,6 +239,11 @@ header {
             <a href="#featured-section" class="inline-block bg-gold text-darkBg font-bold text-lg px-8 py-4 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,215,0,0.4)]">
                 Explore The Books <i class="fa-solid fa-arrow-down ml-2"></i>
             </a>
+          <button onclick="openStoryModal()"
+   class="story-upload-btn inline-flex items-center gap-3 mt-6 px-8 py-4 rounded-full font-bold text-white relative overflow-hidden">
+    <i class="fa-solid fa-upload"></i>
+    Upload Your Story
+</button>
         </div>
         <div class="mt-8 max-w-2xl mx-auto relative z-30">
     <input
@@ -327,6 +370,36 @@ header {
             Read Full Story
         </button>
 
+    </div>
+</section>
+    <section id="share-story" class="py-24 bg-darkBg">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-4 text-center">
+            Share Your Story
+        </h2>
+
+        <p class="text-gray-300 text-center mb-10">
+            अपनी गलती, उससे मिली सीख और दिल की सच्चाई हमारे साथ शेयर करें।
+        </p>
+
+        <div class="space-y-6">
+            <input type="text" id="storyTitle"
+                placeholder="अपनी कहानी का टाइटल"
+                class="w-full px-5 py-4 rounded-xl bg-darkCard border border-white/10 text-white">
+
+            <textarea id="storyText" rows="6"
+                placeholder="अपनी कहानी लिखें..."
+                class="w-full px-5 py-4 rounded-xl bg-darkCard border border-white/10 text-white"></textarea>
+
+            <textarea id="storyLearning" rows="4"
+                placeholder="इस गलती से आपने क्या सीखा?"
+                class="w-full px-5 py-4 rounded-xl bg-darkCard border border-white/10 text-white"></textarea>
+
+            <button onclick="submitStory()"
+                class="w-full bg-gold text-darkBg font-bold py-4 rounded-xl hover:bg-yellow-400 transition">
+                Submit Your Story
+            </button>
+        </div>
     </div>
 </section>
    <section id="policy-page" class="hidden fixed inset-0 z-[9999] bg-[#050A1F] overflow-y-auto px-4 py-20">
@@ -869,5 +942,57 @@ policyItems.map(item =>
     document.getElementById("siteSearch").value = item;
 }
     </script>
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCEvINbD2CnbU9SEZM_S4eCwltu2uYGiGg",
+  authDomain: "artich-community.firebaseapp.com",
+  projectId: "artich-community",
+  storageBucket: "artich-community.firebasestorage.app",
+  messagingSenderId: "896562849315",
+  appId: "1:896562849315:web:a01ccfe0570717a337f396"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.submitStory = async function () {
+    const title = document.getElementById("storyTitle").value.trim();
+    const story = document.getElementById("storyText").value.trim();
+    const learning = document.getElementById("storyLearning").value.trim();
+
+    if (!title || !story || !learning) {
+        alert("दोस्त, सभी fields भरना जरूरी है ❤️");
+        return;
+    }
+
+    try {
+        await addDoc(collection(db, "communityStories"), {
+            title,
+            story,
+            learning,
+            createdAt: serverTimestamp(),
+            approved: false
+        });
+
+        alert("तुम्हारी कहानी ARTICH तक पहुँच गई ✨");
+
+        document.getElementById("storyTitle").value = "";
+        document.getElementById("storyText").value = "";
+        document.getElementById("storyLearning").value = "";
+
+    } catch (error) {
+        console.error(error);
+        alert("कुछ problem आई, फिर से try करो");
+    }
+};
+</script>
 </body>
 </html>
