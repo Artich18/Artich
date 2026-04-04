@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ARTICH | Books by Jaggu Kashyap</title>
+    <title>ARTICH | By Jaggu Kashyap</title>
     
     <!-- Tailwind CSS (डिजाइन के लिए) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -199,11 +199,22 @@ header {
     <nav class="fixed w-full z-50 top-0 bg-transparent backdrop-md border-b border-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.15)] transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
+                <div id="navbarSearch" class="hidden mt-2 pb-4">
+    <input
+        id="siteSearch"
+        type="text"
+        placeholder="Search stories..."
+        class="w-full px-4 py-2 rounded-full bg-white/10 border border-white/10 text-white placeholder-gray-400"
+    />
+</div>
+                <div class="flex items-center gap-4 flex-shrink-0">
                     <a href="#home" class="text-4xl font-extrabold tracking-widest text-[#FFF4A3] drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]">
   ARTICH
 </a>
-                </div>
+    <button onclick="toggleNavbarSearch()" class="text-white hover:text-gold text-lg transition">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    </div>
                 
                 <!-- डेस्कटॉप मेनू (JS से रेंडर होगा) -->
                 <div class="hidden md:block">
@@ -253,18 +264,7 @@ header {
 </button>
       
         </div>
-        <div class="mt-8 max-w-2xl mx-auto relative z-30">
-    <input
-        type="text"
-        id="siteSearch"
-        placeholder="Search books, pages, emotions..."
-        class="w-full px-6 py-2.5 rounded-full bg-[#0B132B]/80 backdrop-blur-xl border border-[#FFF4A3]/30 text-white placeholder-gray-300 focus:outline-none focus:border-[#FFF4A3] shadow-[0_8px_30px_rgba(0,0,0,0.45)] relative z-30"
-        oninput="searchSiteContent()"
-    >
-
-    <div id="searchSuggestions"
-         class="hidden absolute left-0 top-full mt-3 w-full bg-[#0B132B]/95 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden text-left shadow-2xl z-50">
-    </div>
+    
 </div>
     </header>
 
@@ -939,6 +939,9 @@ policyItems.map(item =>
 
 function closeStoryModal() {
     document.getElementById("storyModal").classList.add("hidden");
+}
+        function toggleNavbarSearch() {
+    document.getElementById("navbarSearch").classList.toggle("hidden");
 }
         </script>
     <script type="module">
