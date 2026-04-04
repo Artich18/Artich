@@ -964,6 +964,19 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+        let currentSlide = 0;
+
+window.startStorySlider = function () {
+    const slider = document.getElementById("storiesSlider");
+    const cards = slider.children;
+
+    if (!cards.length) return;
+
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % cards.length;
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 4000);
+};
 async function loadStories() {
     const slider = document.getElementById("storiesSlider");
 
