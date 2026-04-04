@@ -750,7 +750,7 @@ We try to respond to all messages within 24–48 hours.
             const desktopMenuHTML = menuItems.map(item => `<a href="${item.link}" class="menu-link text-gray-200 hover:text-white px-2 py-2 font-semibold text-lg uppercase tracking-wide">${item.name}</a>`).join('');
             document.getElementById('desktop-menu').innerHTML = desktopMenuHTML;
             
-            <div id="mobileMenu" class="hidden md:hidden absolute top-[80px] left-0 w-full z-[999] bg-[#050A1F]/80 backdrop-blur-2xl border-b border-gold/40 shadow-[0_8px_30px_rgba(0,0,0,0.55)]">
+            <div id="mobileMenu" class="hidden md:hidden absolute top-[80px] left-0 w-full z-[999] bg-black/70 backdrop-blur-3xl border-b border-white/10">
 
             // 2. किताबें रेंडर
             document.getElementById('featured-book-container').innerHTML = createBookCard(featuredBook, true);
