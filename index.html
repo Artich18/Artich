@@ -945,10 +945,10 @@ import {
   getFirestore,
   collection,
   addDoc,
+  serverTimestamp,
   getDocs,
   query,
-  orderBy,
-  serverTimestamp
+  orderBy
 } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -962,11 +962,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-// ✅ Load stories into slider
 async function loadStories() {
     const slider = document.getElementById("storiesSlider");
-    if (!slider) return;
 
     const q = query(
         collection(db, "communityStories"),
@@ -980,7 +977,10 @@ async function loadStories() {
 
         return `
             <div class="story-card cursor-pointer" onclick="openFullStory('${doc.id}')">
-                <h3 class="text-2xl font-bold text-white mb-3">${data.title}</h3>
+                <h3 class="text-2xl font-bold text-white mb-3">
+                    ${data.title}
+                </h3>
+
                 <p class="text-gray-100 mb-4 leading-relaxed">
                     ${data.story.substring(0, 140)}...
                 </p>
@@ -1000,12 +1000,8 @@ async function loadStories() {
         `;
     }).join("");
 
-    if (typeof startStorySlider === "function") {
-        startStorySlider();
-    }
+    startStorySlider();
 }
-
-// ✅ Submit story
 window.submitStory = async function () {
     const title = document.getElementById("storyTitle").value.trim();
     const story = document.getElementById("storyText").value.trim();
@@ -1026,25 +1022,56 @@ window.submitStory = async function () {
         });
 
         alert("तुम्हारी कहानी ARTICH तक पहुँच गई ✨");
+        loadStories();
+        closeStoryModal();
 
         document.getElementById("storyTitle").value = "";
         document.getElementById("storyText").value = "";
         document.getElementById("storyLearning").value = "";
-
-        loadStories();
-
-        if (typeof closeStoryModal === "function") {
-            closeStoryModal();
-        }
 
     } catch (error) {
         console.error(error);
         alert("कुछ problem आई, फिर से try करो");
     }
 };
+    <div id="storyModal" class="hidden fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
+    <div class="w-full max-w-2xl bg-darkCard rounded-3xl p-6 relative">
+        
+        <button onclick="closeStoryModal()" class="absolute top-4 right-4 text-white text-2xl">
+            ✕
+        </button>
 
-// ✅ Open full story modal
-window.openFullStory = async function(id) {
+        <h2 class="text-3xl font-bold text-white mb-4 text-center">
+            Share Your Story
+        </h2>
+
+        <div class="space-y-5">
+            <input type="text" id="storyTitle"
+                placeholder="अपनी कहानी का टाइटल"
+                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400 focus:outline-none">
+
+            <textarea id="storyText" rows="5"
+                placeholder="अपनी कहानी लिखें..."
+                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400 focus:outline-none"></textarea>
+
+            <textarea id="storyLearning" rows="4"
+                placeholder="इस गलती से आपने क्या सीखा?"
+                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400 focus:outline-none"></textarea>
+
+            <button onclick="submitStory()"
+                class="w-full bg-gold text-darkBg font-bold py-4 rounded-xl hover:bg-yellow-400 transition">
+                Submit Your Story
+            </button>
+        </div>
+    </div>
+</div>
+    <div id="fullStoryModal" class="hidden fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center px-4">
+    <div class="max-w-2xl w-full bg-darkCard rounded-3xl p-6 relative">
+        <button onclick="closeFullStory()" class="absolute top-4 right-4 text-white text-2xl">✕</button>
+        <div id="fullStoryContent"></div>
+    </div>
+</div>
+    window.openFullStory = async function(id) {
     const snapshot = await getDocs(collection(db, "communityStories"));
     const storyDoc = snapshot.docs.find(doc => doc.id === id);
 
@@ -1062,13 +1089,13 @@ window.openFullStory = async function(id) {
     document.getElementById("fullStoryModal").classList.remove("hidden");
 };
 
-// ✅ Close full story modal
-window.closeFullStory = function() {
+function closeFullStory() {
     document.getElementById("fullStoryModal").classList.add("hidden");
-};
+}
+    loadStories();
+    </script>
+</body>
+</html>
 
-// ✅ Auto load on page open
-loadStories();
-</script>
 </body>
 </html>
