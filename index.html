@@ -196,7 +196,7 @@ header {
 <body class="antialiased">
 
     <!-- ================= नेविगेशन बार (Menu) ================= -->
-    <nav class="fixed w-full z-50 top-0 bg-transparent backdrop-md border-b border-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.15)] transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 top-0 relative bg-transparent backdrop-md border-b border-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.15)] transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
 <input
@@ -229,7 +229,7 @@ header {
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
-                <div id="navbarSearch" class="hidden mt-2 pb-4 relative">
+                <div id="navbarSearch" class="hidden absolute top-full left-0 w-full px-4 pb-4">
             </div>
         </div>
 
@@ -942,6 +942,9 @@ policyItems.map(item =>
 
 function closeStoryModal() {
     document.getElementById("storyModal").classList.add("hidden");
+}
+        function toggleNavbarSearch() {
+    document.getElementById("navbarSearch").classList.toggle("hidden");
 }
         function toggleNavbarSearch() {
     document.getElementById("navbarSearch").classList.toggle("hidden");
