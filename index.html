@@ -992,11 +992,11 @@ async function loadStories() {
                         सीख: ${data.learning}
                     </p>
 
-                    <div class="flex gap-6 text-white text-lg">
-                        <button>❤️ Like</button>
-                        <button>💬 Comment</button>
-                        <button>🔗 Share</button>
-                    </div>
+<div class="flex gap-6 text-white text-lg">
+    <button onclick="event.stopPropagation(); likeStory('${doc.id}')">❤️ Like</button>
+    <button onclick="event.stopPropagation(); commentStory('${doc.id}')">💬 Comment</button>
+    <button onclick="event.stopPropagation(); shareStory('${doc.id}')">🔗 Share</button>
+</div>
                 </div>
             </div>
         `;
@@ -1054,10 +1054,21 @@ window.submitStory = async function () {
     document.getElementById("fullStoryModal").classList.remove("hidden");
 };
 
-function closeFullStory() {
+window.closeFullStory = function() {
     document.getElementById("fullStoryModal").classList.add("hidden");
 }
     loadStories();
+        window.likeStory = function(id) {
+    alert("❤️ Story liked");
+};
+
+window.commentStory = function(id) {
+    alert("💬 Comment feature coming soon");
+};
+
+window.shareStory = function(id) {
+    alert("🔗 Story link shared");
+};
 </script>
     <div id="storyModal" class="hidden fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
     <div class="w-full max-w-2xl bg-darkCard rounded-3xl p-6 relative">
