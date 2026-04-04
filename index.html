@@ -125,8 +125,8 @@
             overflow: hidden;
         }
         header {
-    min-height: 100vh;
-    margin-top: 0;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
 }
         html, body {
     overflow-x: hidden;
@@ -222,14 +222,12 @@ header {
 
         <!-- मोबाइल ड्रॉपडाउन (JS से रेंडर होगा) -->
         <div id="mobileMenu" class="hidden md:hidden bg-darkCard/95 backdrop-blur-xl border-b border-gold absolute top-[80px] left-0 w-full z-40">
-    <div id="mobile-menu-container" class="px-4 pt-2 pb-6 space-y-2 text-center flex flex-col"></div>
-</div>
             <div id="mobile-menu-container" class="px-4 pt-2 pb-6 space-y-2 text-center flex flex-col"></div>
         </div>
     </nav>
 
     <!-- ================= नेटफ्लिक्स स्टाइल हीरो सेक्शन ================= -->
-    <header id="home" class="relative min-h-[90vh] flex flex-col items-center justify-start text-center overflow-hidden">
+    <header id="home" class="relative h-screen min-h-[600px] flex flex-col items-center justify-center text-center overflow-hidden">
         <div class="hero-bg absolute inset-0 z-0"></div>
         <div class="netflix-overlay absolute inset-0 z-10"></div>
         
@@ -250,13 +248,15 @@ header {
                 Explore The Books <i class="fa-solid fa-arrow-down ml-2"></i>
             </a>
           <button onclick="openStoryModal()"
-class="story-upload-btn inline-flex items-center gap-3 mt-6 px-8 py-4 rounded-full font-bold text-white relative overflow-hidden">
+   class="story-upload-btn inline-flex items-center gap-3 mt-6 px-8 py-4 rounded-full font-bold text-white relative overflow-hidden">
     <i class="fa-solid fa-upload"></i>
     Upload Your Story
 </button>
-
+      
+        </div>
+    
 </div>
-</header>
+    </header>
 
     <!-- ================= फीचर्ड बुक सेक्शन (1 किताब) ================= -->
     <section class="py-24 relative z-20 bg-darkBg" id="featured-section">
@@ -750,7 +750,8 @@ We try to respond to all messages within 24–48 hours.
             const desktopMenuHTML = menuItems.map(item => `<a href="${item.link}" class="menu-link text-gray-200 hover:text-white px-2 py-2 font-semibold text-lg uppercase tracking-wide">${item.name}</a>`).join('');
             document.getElementById('desktop-menu').innerHTML = desktopMenuHTML;
             
-            <div id="mobileMenu" class="hidden md:hidden absolute top-[80px] left-0 w-full z-[999] bg-black/70 backdrop-blur-3xl border-b border-white/10">
+            const mobileMenuHTML = menuItems.map(item => `<a href="${item.link}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold px-4 py-3 font-medium text-lg border-b border-gray-800">${item.name}</a>`).join('');
+            document.getElementById('mobile-menu-container').innerHTML = mobileMenuHTML;
 
             // 2. किताबें रेंडर
             document.getElementById('featured-book-container').innerHTML = createBookCard(featuredBook, true);
