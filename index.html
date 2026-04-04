@@ -979,13 +979,14 @@ let isDragging = false;
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }, 4000);
 };
-        slider.addEventListener("touchstart", e => {
+slider.addEventListener("touchstart", e => {
     startX = e.touches[0].clientX;
     isDragging = true;
 });
 
 slider.addEventListener("touchmove", e => {
     if (!isDragging) return;
+    
     const moveX = e.touches[0].clientX;
     const diff = startX - moveX;
 
@@ -999,7 +1000,8 @@ slider.addEventListener("touchmove", e => {
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         isDragging = false;
     }
-});
+ });
+};        
 async function loadStories() {
     const slider = document.getElementById("storiesSlider");
 
