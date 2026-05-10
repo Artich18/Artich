@@ -137,56 +137,60 @@ closePopup.addEventListener("click", () => {
 // POLICY POPUPS
 // =========================
 
-const popupLinks = {
+const privacyLink = document.getElementById("privacyLink");
+const termsLink = document.getElementById("termsLink");
+const copyrightLink = document.getElementById("copyrightLink");
+const disclaimerLink = document.getElementById("disclaimerLink");
+const contactLink = document.getElementById("contactLink");
 
-  privacyLink: "privacyPopup",
+const privacyPopup = document.getElementById("privacyPopup");
+const termsPopup = document.getElementById("termsPopup");
+const copyrightPopup = document.getElementById("copyrightPopup");
+const disclaimerPopup = document.getElementById("disclaimerPopup");
+const contactPopup = document.getElementById("contactPopup");
 
-  termsLink: "termsPopup",
-
-  copyrightLink: "copyrightPopup",
-
-  disclaimerLink: "disclaimerPopup",
-
-  contactLink: "contactPopup"
-
-};
-
-for (const linkId in popupLinks) {
-
-  const link = document.getElementById(linkId);
-
-  const popup = document.getElementById(popupLinks[linkId]);
-
-  if(link && popup){
-
-    link.addEventListener("click", (e) => {
-
-      e.preventDefault();
-
-      popup.style.display = "flex";
-
-    });
-
-  }
-
+if(privacyLink){
+  privacyLink.onclick = () => {
+    privacyPopup.style.display = "flex";
+  };
 }
+
+if(termsLink){
+  termsLink.onclick = () => {
+    termsPopup.style.display = "flex";
+  };
+}
+
+if(copyrightLink){
+  copyrightLink.onclick = () => {
+    copyrightPopup.style.display = "flex";
+  };
+}
+
+if(disclaimerLink){
+  disclaimerLink.onclick = () => {
+    disclaimerPopup.style.display = "flex";
+  };
+}
+
+if(contactLink){
+  contactLink.onclick = () => {
+    contactPopup.style.display = "flex";
+  };
+}
+
+// CLOSE BUTTONS
 
 const closeButtons = document.querySelectorAll(".close-policy");
 
 closeButtons.forEach(button => {
 
-  button.addEventListener("click", () => {
+  button.onclick = () => {
 
     const popupId = button.getAttribute("data-close");
 
-    const popup = document.getElementById(popupId);
+    document.getElementById(popupId).style.display = "none";
 
-    if(popup){
-
-      popup.style.display = "none";
-
-    }
-
-  });
+  };
 
 });
