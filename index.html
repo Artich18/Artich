@@ -1,1146 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ARTICH | By Jaggu Kashyap</title>
-    
-    <!-- Tailwind CSS (डिजाइन के लिए) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: 
-                        darkBg: '#050A1F',
-                        neonBlue: '#00F0FF',
-                        gold: '#FFD700',
-                        darkCard: '#0B132B'
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- FontAwesome (आइकॉन्स के लिए) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- तुम्हारी कस्टम CSS -->
-    <style>
-        html {
-    scroll-behavior: smooth;
-}
-        /* बेसिक सेटअप और फोंट्स */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #050A1F;
-            color: white;
-            overflow-x: hidden;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
 
-        /* लाइट्स और ग्लो इफ़ेक्ट */
-        .gold-light-text { text-shadow: 0 4px 10px rgba(0,0,0,0.9), 0 8px 20px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.7); }
-        .blue-light-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4); }
-        .gold-glow-box { box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
-        .blue-glow-box { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* नेटफ्लिक्स जैसा हीरो सेक्शन इफ़ेक्ट */
-        .hero-bg {
-            /* यहाँ तुम्हारी असली फोटो का लिंक आ गया है दोस्त */
-            background-image: url('images/jaggu.jpg');
-            background-color: #050A1F;
-            background-size: cover;
-            background-position: 60% center;
-            background-repeat: no-repeat;
-            background-attachment: scroll;
-        }
+  <title>ARTICH | Emotional Storyteller</title>
 
-        /* Laptop aur badi screens par fixed effect wapas lagane ke liye */
-        @media (min-width: 768px) {
-    .hero-bg {
-        background-position: left center;
-        background-attachment: fixed;
-    }
-        }
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-        .netflix-overlay {
-            /* नीचे से गहरा नीला/काला और ऊपर से हल्का ट्रांसपेरेंट */
-            background: linear-gradient(to top, #050A1F 5%, rgba(5, 10, 31, 0.7) 50%, rgba(5, 10, 31, 0.4) 100%);
-        }
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* प्रोफेशनल बुक कार्ड एनिमेशन */
-        .book-card { 
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; 
-            background: linear-gradient(145deg, #0B132B, #050A1F); 
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+  <!-- ICON -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .book-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.2); 
-            border-color: #00F0FF; 
-            z-index: 10;
-        }
-
-        /* बटन और आइकन के होवर इफ़ेक्ट */
-        .btn-animate { transition: all 0.3s ease; }
-        .btn-animate:hover { transform: scale(1.03); }
-
-        .social-icon { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .social-icon:hover { 
-            transform: translateY(-8px) scale(1.1); 
-            color: #FFD700; 
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            border-color: #FFD700;
-        }
-
-        .menu-link { transition: all 0.3s ease; position: relative; }
-        .menu-link::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -4px; left: 0;
-            background-color: #00F0FF;
-            transition: width 0.3s ease;
-        }
-        .menu-link:hover::after { width: 100%; }
-        .menu-link:hover { color: #00F0FF; }
-        
-        /* कस्टम स्क्रोलबार */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050A1F; }
-        ::-webkit-scrollbar-thumb { background: #0B132B; border: 1px solid #FFD700; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FFD700; }
-        * {
-
-            box-sizing: border-box;
-        }
-        header {
-
-            width: 100%;
-
-            overflow: hidden;
-        }
-        header {
-    height: calc(100vh - 80px);
-    margin-top: 80px;
-}
-        html, body {
-    overflow-x: hidden;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-* {
-    box-sizing: border-box;
-    max-width: 100%;
-}
-
-header {
-    overflow-x: hidden;
-}
-        .social-icon {
-    transition: all 0.4s ease;
-}
-        .story-upload-btn {
-    background: rgba(11, 19, 43, 0.9);
-    border: 2px solid transparent;
-    position: relative;
-    z-index: 1;
-    isolation: isolate;
-    transition: transform 0.3s ease;
-}
-
-.story-upload-btn::before {
-    content: "";
-    position: absolute;
-    inset: -3px;
-    border-radius: 9999px;
-    background: conic-gradient(
-        from 0deg,
-        #ff0080,
-        #00f0ff,
-        #ffd700,
-        #8b5cf6,
-        #ff0080
-    );
-    z-index: -2;
-    animation: spinGlow 3s linear infinite;
-}
-
-.story-upload-btn::after {
-    content: "";
-    position: absolute;
-    inset: 2px;
-    border-radius: 9999px;
-    background: rgba(11, 19, 43, 0.95);
-    z-index: -1;
-}
-
-@keyframes spinGlow {
-    100% { transform: rotate(360deg); }
-}
-        .story-card {
-    min-width: 100%;
-    border-radius: 24px;
-    padding: 24px;
-    background: linear-gradient(135deg, #1e3a8a, #7c3aed, #db2777);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-}
-    </style>
 </head>
-<body class="antialiased">
 
-    <!-- ================= नेविगेशन बार (Menu) ================= -->
-    <nav class="fixed w-full z-50 top-0 relative bg-[#050A1F]/90 backdrop-blur-md border-b border-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.15)] transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-4 flex-shrink-0">
-                    <a href="#home" class="text-4xl font-extrabold tracking-widest text-[#FFF4A3] drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]">
-  ARTICH
-</a>
-   
+<body>
+
+  <!-- ===================== -->
+  <!-- BACKGROUND BLUR -->
+  <!-- ===================== -->
+
+  <div class="bg-blur blur1"></div>
+  <div class="bg-blur blur2"></div>
+
+
+
+  <!-- ===================== -->
+  <!-- NAVBAR -->
+  <!-- ===================== -->
+
+  <header class="navbar">
+
+    <div class="logo">
+      ARTICH
     </div>
-                
-                <!-- डेस्कटॉप मेनू (JS से रेंडर होगा) -->
-                <div class="hidden md:block">
-                    <div id="desktop-menu" class="ml-10 flex items-baseline space-x-8"></div>
-                </div>
 
-                <!-- मोबाइल मेनू बटन -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="text-gold hover:text-white transition focus:outline-none text-2xl">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                </div>
-        
-</div>
+    <nav>
 
-        <!-- मोबाइल ड्रॉपडाउन (JS से रेंडर होगा) -->
-        <div id="mobileMenu" class="hidden md:hidden bg-darkCard/95 backdrop-blur-xl border-b border-gold absolute top-[80px] left-0 w-full z-40">
-            <div id="mobile-menu-container" class="px-4 pt-2 pb-6 space-y-2 text-center flex flex-col"></div>
-        </div>
+      <ul class="nav-links">
+
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+
     </nav>
 
-    <!-- ================= नेटफ्लिक्स स्टाइल हीरो सेक्शन ================= -->
-    <header id="home" class="relative h-screen min-h-[600px] flex flex-col items-center justify-center text-center overflow-hidden">
-        <div class="hero-bg absolute inset-0 z-0"></div>
-        <div class="netflix-overlay absolute inset-0 z-10"></div>
-        
-        <div class="relative z-20 max-w-4xl mx-auto px-4 mt-10">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 drop-shadow-2xl leading-snug">
-    Books That Feel Like<br/> 
-    <span class="inline-block mt-1 sm:mt-2 text-[#FFF4A3] drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)]">
-        Your Own Life.
-    </span>
-</h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto font-light">
-                "We all make mistakes, but the stories we build from them change the world. Welcome to my raw truth."
-                <br>
-                <span class="text-neonBlue blue-light-text font-semibold mt-4 inline-block text-lg">— Jaggu Kashyap</span>
-            </p>
-            
-            <a href="#featured-section" class="inline-block bg-gold text-darkBg font-bold text-lg px-8 py-4 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,215,0,0.4)]">
-                Explore The Books <i class="fa-solid fa-arrow-down ml-2"></i>
+    <div class="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+  </header>
+
+
+
+  <!-- ===================== -->
+  <!-- HERO SECTION -->
+  <!-- ===================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-left">
+
+      <span class="hero-tag">
+        Emotional Creator • Storyteller • Author
+      </span>
+
+      <h1>
+
+        Some wounds
+        <span id="changing-text">
+          never speak.
+        </span>
+
+      </h1>
+
+      <p>
+        I create emotional stories, books and videos
+        for people who silently fight battles nobody sees.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#videos" class="primary-btn">
+          Watch Videos
+        </a>
+
+        <a href="#books" class="secondary-btn">
+          Read Books
+        </a>
+
+      </div>
+
+
+
+      <!-- SOCIAL LINKS -->
+
+      <div class="social-icons">
+
+        <a href="https://www.youtube.com/@Jaggu_Kashyap" target="_blank">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="https://www.facebook.com/jaggu.kashyap.50" target="_blank">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+
+        <a href="https://instagram.com/jaggu__kashyap" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://twitter.com/JAGGUKASHYAP4" target="_blank">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/jaggu-kashyap-026247268" target="_blank">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- HERO IMAGE -->
+
+    <div class="hero-right">
+
+      <div class="hero-image-box">
+
+        <!-- UPDATE YOUR IMAGE -->
+
+        <img src="images/profile.png" alt="">
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================== -->
+  <!-- ABOUT -->
+  <!-- ===================== -->
+
+  <section class="about" id="about">
+
+    <div class="section-heading">
+
+      <span>ABOUT</span>
+
+      <h2>
+        Stories written from real life pain.
+      </h2>
+
+    </div>
+
+    <div class="about-wrapper">
+
+      <div class="about-card">
+
+        <h3>
+          I don't create content to impress people.
+        </h3>
+
+        <p>
+          I create stories for people who feel lonely,
+          emotionally tired and unheard inside.
+        </p>
+
+      </div>
+
+      <div class="about-card">
+
+        <h3>
+          Every video comes from experience.
+        </h3>
+
+        <p>
+          My books and stories are inspired by struggles,
+          emotional memories and silent realities.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================== -->
+  <!-- BOOKS -->
+  <!-- ===================== -->
+
+  <section class="books" id="books">
+
+    <div class="section-heading">
+
+      <span>BOOKS</span>
+
+      <h2>
+        Emotional books that feel personal.
+      </h2>
+
+    </div>
+
+
+
+    <div class="books-grid">
+
+      <!-- BOOK CARD -->
+
+      <div class="book-card">
+
+        <div class="book-image">
+
+          <img src="images/book1.jpg" alt="">
+
+        </div>
+
+        <div class="book-content">
+
+          <h3>The Weight Of Empty Pockets</h3>
+
+          <p>
+            A deeply emotional journey of struggle,
+            loneliness and survival.
+          </p>
+
+          <div class="book-actions">
+
+            <a href="#" class="read-btn">
+              Read More
             </a>
-          <button onclick="openStoryModal()"
-   class="story-upload-btn inline-flex items-center gap-3 mt-6 px-8 py-4 rounded-full font-bold text-white relative overflow-hidden">
-    <i class="fa-solid fa-upload"></i>
-    Upload Your Story
-</button>
-      
-        </div>
-    
-</div>
-    </header>
 
-    <!-- ================= फीचर्ड बुक सेक्शन (1 किताब) ================= -->
-    <section class="py-24 relative z-20 bg-darkBg" id="featured-section">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="w-2 h-10 bg-gold gold-glow-box"></div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white gold-light-text uppercase tracking-wide">Featured Release</h2>
-            </div>
-            <div id="featured-book-container"></div>
-        </div>
-    </section>
+            <a href="#" class="buy-btn">
+              Buy Now
+            </a>
 
-    <!-- ================= न्यू अराइवल (2 किताबें) ================= -->
-    <section class="py-24 bg-darkCard border-y border-gold/10 relative" id="new-arrivals-section">
-        <!-- बैकग्राउंड ग्लो -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-neonBlue rounded-full filter blur-[150px] opacity-10 pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="w-2 h-10 bg-neonBlue blue-glow-box"></div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white blue-light-text uppercase tracking-wide">New Arrivals</h2>
-            </div>
-            <div id="new-arrivals-container" class="grid grid-cols-1 md:grid-cols-2 gap-10"></div>
-        </div>
-    </section>
+          </div>
 
-    <!-- ================= बेस्ट सेलिंग (2 किताबें) ================= -->
-    <section class="py-24 bg-darkBg relative" id="best-selling-section">
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-gold rounded-full filter blur-[150px] opacity-5 pointer-events-none"></div>
+          <div class="book-icons">
 
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="w-2 h-10 bg-gold gold-glow-box"></div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white gold-light-text uppercase tracking-wide">Best Sellers</h2>
-            </div>
-            <div id="best-selling-container" class="grid grid-cols-1 md:grid-cols-2 gap-10"></div>
-        </div>
-    </section>
-
-    <!-- ================= लेखक के बारे में (About Author) ================= -->
-    <section id="about-author" class="py-24 relative bg-darkCard border-t border-neonBlue/20">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-
-        <!-- Author Image -->
-        <div class="w-48 h-48 mx-auto rounded-full overflow-hidden gold-glow-box mb-8 border-4 border-darkBg relative group">
-            <img src="images/jaggu.jpg" alt="Jaggu Kashyap" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-        </div>
-
-        <!-- Name -->
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Jaggu <span class="text-gold gold-light-text">Kashyap</span>
-        </h2>
-
-        <p class="text-neonBlue font-semibold mb-8 tracking-widest uppercase">
-            Author | Creator | Storyteller
-        </p>
-
-        <!-- SHORT INTRO -->
-        <p class="text-gray-300 text-lg leading-relaxed mb-6">
-            Jaggu Kashyap is the founder and author behind ARTICH, a storytelling brand focused on real-life moments, resilience, and everyday inspiration. His writing blends emotion, authenticity, and real experiences.
-        </p>
-
-        <!-- HIDDEN FULL STORY -->
-        <div id="fullStory" class="text-gray-400 text-lg leading-relaxed space-y-5 hidden">
-
-            <p>
-                My name is Jaggu Kashyap. I am a writer and storyteller. I do not write to create imaginary stories. I write about things that I have seen, felt, and experienced in real life.
-            </p>
-
-            <p>
-                My journey of writing did not start with books or fame. It started during a very difficult time in my life. There were days when life was so hard that I had to spend nights on the streets, on open grounds, and sometimes under the open sky.
-            </p>
-
-            <p>
-                At that time, I did not know that those struggles and experiences would one day become the source of my writing.
-            </p>
-
-            <p>
-                I believe that every person has many stories inside them. But most people never get a chance to share those stories. Pain, silence, struggles, and hopes often stay hidden inside our hearts.
-            </p>
-
-            <p>
-                Through my writing, I try to give words to those feelings that people often cannot express.
-            </p>
-
-            <p>
-                My book “Maa, Main Theek Hoon” is also inspired by real emotions. It is not just a story. It reflects the feelings of many people who hide their pain and simply say to their loved ones:
-                <br><br>
-                <strong class="text-white">“Mom, I’m fine.”</strong>
-            </p>
-
-            <p>
-                Through my stories, I hope readers feel that someone understands what they are going through.
-            </p>
-
-            <p>
-                ARTICH is not just a name for me. It is a place where real emotions, life experiences, and human stories are shared through words.
-            </p>
-
-            <p>
-                If my story or my book makes someone stop for a moment and feel something real, then my writing has done its job.
-            </p>
-
-        </div>
-
-        <!-- BUTTON -->
-        <button onclick="toggleStory()" 
-        class="mt-6 bg-gold text-darkBg px-8 py-3 rounded-full font-semibold hover:scale-105 transition">
-            Read Full Story
-        </button>
-
-    </div>
-</section>
-    <section id="community-stories" class="py-24 bg-darkBg overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-white text-center mb-12">
-            Community Stories
-        </h2>
-
-        <div class="relative">
-            <div id="storiesSlider" class="flex gap-6 transition-transform duration-700 ease-in-out">
-                <!-- Firebase stories yahan aayengi -->
-            </div>
-        </div>
-    </div>
-</section>
-   <section id="policy-page" class="hidden fixed inset-0 z-[9999] bg-[#050A1F] overflow-y-auto px-4 py-20">
-    <div id="policy-content" class="max-w-4xl mx-auto"></div>
-</section>
-
-    <!-- ================= फुटर (सोशल आइकन और पॉलिसी) ================= -->
-    <footer id="contact" class="bg-[#020510] pt-20 pb-10 text-center relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <h3 class="text-3xl font-bold text-white mb-2 tracking-widest">Join The Journey</h3>
-            <p class="text-gray-400 mb-10">Let's connect, share stories, and learn together.</p>
-            
-            <!-- सोशल आइकन (JS से रेंडर होंगे) -->
-            <div id="social-container" class="flex justify-center flex-wrap gap-6 mb-16"></div>
-            
-            <!-- पॉलिसी लिंक (JS से रेंडर होंगे) -->
-            <div class="relative border-t border-gray-800 pt-10 overflow-hidden">
-    
-    <!-- Logo Watermark Background -->
-    <div class="absolute inset-0 bg-[url('images/artich-logo-jaggu-kashyap.png')] bg-no-repeat bg-center bg-[length:200px] opacity-25 pointer-events-none"></div>
-    
-    <!-- Policy Links -->
-    <div id="policy-container" class="relative z-10 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 font-medium"></div>
-</div>
-            
-            <p class="mt-10 text-gray-600 text-sm">© <span id="year"></span> Jaggu Kashyap | ARTICH. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- ================= JavaScript (कंट्रोल रूम) ================= -->
-    <script>
-        // ================= 1. तुम्हारा सारा डेटा (Central Data Control) =================
-
-        const menuItems = [
-            { name: "Home", link: "#home" },
-            { name: "Community Stories", link: "#community-stories" },
-            { name: "Books", link: "#new-arrivals-section" },
-            { name: "About Author", link: "#about-author" },
-            { name: "Contact", link: "#contact" }
-        ];
-
-        const policyItems = [
-    { name: "Privacy Policy", link: "privacy" },
-    { name: "Terms & Conditions", link: "terms" },
-    { name: "Copyright Policy", link: "copyright" },
-    { name: "Disclaimer", link: "disclaimer" },
-    { name: "Contact", link: "contact" }
-];
-        const pages = {
-        privacy: `
-<h1 class="text-3xl font-bold mb-6">Privacy Policy</h1>
-
-<p class="text-gray-300 leading-relaxed">
-At ARTICH, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you visit our website.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">1. Information We Collect</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We may collect personal information such as your name, email address, or any details you provide when contacting us.
-</p>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We may also collect non-personal data like browser type, device information, and pages visited.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">2. How We Use Your Information</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We use your information to:
-</p>
-<ul class="list-disc pl-6 text-gray-300 mt-2 space-y-1">
-<li>Improve website performance and user experience</li>
-<li>Respond to your queries and messages</li>
-<li>Analyze user behavior for better content delivery</li>
-</ul>
-
-<h2 class="text-xl font-semibold mt-8">3. Cookies</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Our website may use cookies to enhance your browsing experience. You can disable cookies in your browser settings if you prefer.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">4. Third-Party Links</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Our website may contain links to third-party platforms like Amazon or Flipkart. We are not responsible for their privacy practices or content.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">5. Data Protection</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We take reasonable steps to protect your data. However, no method of transmission over the internet is 100% secure.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">6. Your Consent</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-By using our website, you agree to this Privacy Policy.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">7. Updates</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We may update this policy from time to time. Changes will be posted on this page.
-</p>
-`,
-            terms: `
-<h1 class="text-3xl font-bold mb-6">Terms & Conditions</h1>
-
-<p class="text-gray-300 leading-relaxed">
-By using ARTICH, you agree to the following terms:
-</p>
-
-<h2 class="text-xl font-semibold mt-8">1. Use of Website</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-This website is intended for informational and promotional purposes related to books by Jaggu Kashyap.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">2. Content Ownership</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-All content on this website belongs to the owner unless stated otherwise.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">3. User Responsibility</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-You agree not to misuse the website, attempt to hack, copy, or exploit content.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">4. External Links</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We provide links to platforms like Amazon and Flipkart. We are not responsible for purchases or issues on those platforms.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">5. Limitation of Liability</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We are not responsible for any loss, damage, or issues arising from the use of this website.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">6. Changes</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We may modify these terms at any time.
-</p>
-`,
-            copyright: `
-<h1 class="text-3xl font-bold mb-6">Copyright Policy</h1>
-
-<p class="text-gray-300 leading-relaxed">
-All content on ARTICH is protected under copyright law.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">1. Ownership</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-All text, images, and design belong to Jaggu Kashyap unless stated otherwise.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">2. Restrictions</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-You may not copy, reproduce, or distribute content without permission.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">3. Fair Use</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Limited use may be allowed for personal or non-commercial purposes.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">4. Violations</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Unauthorized use may lead to legal action.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">5. Contact</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-If you believe your content is used improperly, please contact us.
-</p>
-`,
-            disclaimer: `
-<h1 class="text-3xl font-bold mb-6">Disclaimer</h1>
-
-<p class="text-gray-300 leading-relaxed">
-The information provided on ARTICH is for general informational and promotional purposes only.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">1. Content Accuracy</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We strive to keep all information accurate and up to date. However, we make no guarantees about the completeness, reliability, or accuracy of any content.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">2. Personal Opinions</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Some content, especially in non-fiction books, may reflect personal experiences, opinions, or interpretations. These are shared for informational purposes and should not be considered professional advice.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">3. External Links</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Our website may contain links to third-party platforms such as Amazon and Flipkart. We do not control or guarantee the content, services, or reliability of these external websites.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">4. No Liability</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We are not responsible for any loss, damage, or inconvenience caused by using our website or relying on any information provided here.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">5. User Responsibility</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-Users are responsible for their own decisions and actions based on the information available on this website.
-</p>
-
-<p class="text-gray-300 mt-6 leading-relaxed">
-By using this website, you agree to this disclaimer.
-</p>
-`,
-            contact: `
-<h1 class="text-3xl font-bold mb-6">Contact Us</h1>
-
-<p class="text-gray-300 leading-relaxed">
-If you have any questions, feedback, or inquiries, feel free to reach out to us.
-We are always open to hearing from our readers and visitors.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">📩 Email</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-You can contact us via email: 
-<span class="font-semibold text-gold">jaggukashyap1995@gmail.com</span> 
-or via 
-<span class="font-semibold text-gold">LinkedIn</span>.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">💬 General Queries</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-For general questions about books, content, or the website, feel free to email us anytime.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">🤝 Business / Collaboration</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-For partnerships, collaborations, or business-related inquiries, please mention 
-<span class="font-semibold text-gold">“Business Inquiry”</span> in the subject line.
-</p>
-
-<h2 class="text-xl font-semibold mt-8">⚠️ Response Time</h2>
-<p class="text-gray-300 mt-2 leading-relaxed">
-We try to respond to all messages within 24–48 hours.
-</p>
-`,
-            };
-
-        const socialLinks = [
-            { icon: "fa-youtube", link: "https://www.youtube.com/@Jaggu_Kashyap", color: "text-red-500", hoverColor: "hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
-            { icon: "fa-facebook", link: "https://www.facebook.com/jaggu.kashyap.50", color: "text-blue-500", hoverColor: "hover:text-blue-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" },
-            { icon: "fa-instagram", link: "https://instagram.com/jaggu__kashyap", color: "text-pink-500", hoverColor: "hover:text-pink-500 hover:border-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]" },
-            { icon: "fa-twitter", link: "https://twitter.com/JAGGUKASHYAP4", color: "text-white", hoverColor: "hover:text-white hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.5)]" },
-            { icon: "fa-linkedin", link: "https://www.linkedin.com/in/jaggu-kashyap-026247268", color: "text-blue-500", hoverColor: "hover:text-blue-500 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" }
-        ];
-
-        // किताबों का डेटा (यहाँ तुम भविष्य में और किताबें जोड़ सकते हो)
-        const featuredBook = {
-            title: "माँ, मैं ठीक हूँ",
-            tag: "Non-Fiction",
-            image: "images/book-covers/maa-main-theek-hun-book-jaggu-kashyap.jpg", // Placeholder book image
-            desc: "“मां, मैं ठीक हूं…” — ये सिर्फ एक लाइन नहीं, वो झूठ है जो हर वो इंसान बोलता है जो घर से दूर है। अगर किताब में वो खामोशी है जो फोन कटने के बाद रह जाती है, और वो दर्द है जो कोई देख नहीं पाता अगरर तुमने कभी अपनों से दूर रहकर खुद को संभाला है… तो ये कहानी तुम्हारी ही है।”",
-            amazon: "https://amazon.in", 
-            flipkart: "https://flipkart.com"
-        };
-
-        const newArrivals = [
-            { 
-                title: "The Silent Mistake", 
-                tag: "Non Fiction", 
-                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1498&auto=format&fit=crop", 
-                desc: "A heartbreaking story of unsaid words and decisions that change lives forever. Sometimes the loudest screams are the ones no one hears.", 
-                amazon: "#", flipkart: "#" 
-            },
-            { 
-                title: "Pain to Power", 
-                tag: "Non-Fiction", 
-                image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1512&auto=format&fit=crop", 
-                desc: "Learn how to convert your deepest regrets into your strongest weapons. Real talk on healing and moving forward.", 
-                amazon: "#", flipkart: "#" 
-            }
-        ];
-
-        const bestSellers = [
-            { 
-                title: "Lost in the Crowd", 
-                tag: "Fiction", 
-                image: "https://images.unsplash.com/photo-1476275466078-4007374efac4?q=80&w=1287&auto=format&fit=crop", 
-                desc: "Finding yourself when everyone is watching, yet no one truly sees you. A relatable tale for today's generation.", 
-                amazon: "#", flipkart: "#" 
-            },
-            { 
-                title: "Echoes of Truth", 
-                tag: "Non-Fiction", 
-                image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1287&auto=format&fit=crop", 
-                desc: "The bitter truth nobody tells you about success, failure, and the lonely road in between.", 
-                amazon: "#", flipkart: "#" 
-            }
-        ];
-     const searchableContent = [
-    "माँ, मैं ठीक हूँ",
-    "The Silent Mistake",
-    "Pain to Power",
-    "Lost in the Crowd",
-    "Echoes of Truth",
-    "About Author",
-    "Featured Release",
-    "New Arrivals",
-    "Best Sellers",
-    "Privacy Policy",
-    "Terms & Conditions",
-    "Copyright Policy",
-    "Disclaimer",
-    "Contact",
-    "Jaggu Kashyap",
-    "ARTICH"
-];
-
-        // ================= 2. रेंडर करने के फंक्शन्स (UI Builders) =================
-
-        // कार्ड बनाने का डिज़ाइन
-        function createBookCard(book, isFeatured = false) {
-            const layout = isFeatured ? 'md:flex-row' : 'flex-col';
-            const imgContainer = isFeatured ? 'md:w-2/5 h-96 md:h-[500px]' : 'w-full h-80';
-            const contentContainer = isFeatured ? 'md:w-3/5 p-8 md:p-14' : 'w-full p-6 p-8';
-            const titleSize = isFeatured ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl';
-            const tagColor = book.tag.includes('Fiction') && !book.tag.includes('Non') ? 'bg-neonBlue text-darkBg' : 'bg-gold text-darkBg';
-
-            return `
-            <div class="book-card rounded-3xl overflow-hidden flex flex-col ${layout} relative ${isFeatured ? 'gold-glow-box' : ''}">
-                
-                <!-- Tag -->
-                <div class="absolute top-6 left-6 ${tagColor} text-xs md:text-sm font-bold px-4 py-1.5 rounded-full z-10 shadow-lg tracking-wider uppercase">
-                    ${book.tag}
-                </div>
-                
-                <!-- Like & Share -->
-                <div class="absolute top-6 right-6 z-10 flex gap-3">
-                    <button onclick="toggleLike(this)" class="bg-darkBg/90 backdrop-blur-sm p-3 rounded-full text-white hover:text-red-500 transition-all border border-gray-600 focus:outline-none hover:scale-110 shadow-lg">
-                        <i class="fa-regular fa-heart text-lg"></i>
-                    </button>
-                    <button onclick="shareBook('${book.title}')" class="bg-darkBg/90 backdrop-blur-sm p-3 rounded-full text-white hover:text-gold transition-all border border-gray-600 focus:outline-none hover:scale-110 shadow-lg">
-                        <i class="fa-solid fa-share-nodes text-lg"></i>
-                    </button>
-                </div>
-
-                <!-- Image -->
-                <div class="${imgContainer} overflow-hidden relative group">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500 z-0"></div>
-                    <img src="${book.image}" alt="${book.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-in-out">
-                </div>
-                
-                <!-- Content -->
-                <div class="${contentContainer} flex flex-col justify-center bg-darkCard/50 backdrop-blur-sm relative z-10">
-                    <h3 class="${titleSize} font-extrabold text-white mb-4 leading-tight">${book.title}</h3>
-                    <div class="w-16 h-1 bg-gray-700 mb-6"></div>
-                    <p class="text-gray-300 text-lg mb-8 leading-relaxed font-light">${book.desc}</p>
-                    
-                    <!-- Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-                        <a href="${book.amazon}" target="_blank" class="btn-animate flex-1 bg-gold text-darkBg text-center font-bold py-3.5 px-6 rounded-xl hover:bg-yellow-400 shadow-[0_4px_15px_rgba(255,215,0,0.3)]">
-                            <i class="fa-brands fa-amazon mr-2 text-xl align-middle"></i> Buy on Amazon
-                        </a>
-                        <a href="${book.flipkart}" target="_blank" class="btn-animate flex-1 bg-blue-600 text-white text-center font-bold py-3.5 px-6 rounded-xl hover:bg-blue-500 shadow-[0_4px_15px_rgba(37,99,235,0.3)]">
-                            <i class="fa-solid fa-cart-shopping mr-2 align-middle"></i> Buy on Flipkart
-                        </a>
-                    </div>
-                </div>
-            </div>`;
-        }
-
-        // वेबसाइट लोड होते ही डेटा को HTML में इंजेक्ट करना
-        window.onload = () => {
-            // 1. मेनू रेंडर
-            const desktopMenuHTML = menuItems.map(item => `<a href="${item.link}" class="menu-link text-gray-200 hover:text-white px-2 py-2 font-semibold text-lg uppercase tracking-wide">${item.name}</a>`).join('');
-            document.getElementById('desktop-menu').innerHTML = desktopMenuHTML;
-            
-            const mobileMenuHTML = menuItems.map(item => `<a href="${item.link}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold px-4 py-3 font-medium text-lg border-b border-gray-800">${item.name}</a>`).join('');
-            document.getElementById('mobile-menu-container').innerHTML = mobileMenuHTML;
-
-            // 2. किताबें रेंडर
-            document.getElementById('featured-book-container').innerHTML = createBookCard(featuredBook, true);
-            document.getElementById('new-arrivals-container').innerHTML = newArrivals.map(b => createBookCard(b)).join('');
-            document.getElementById('best-selling-container').innerHTML = bestSellers.map(b => createBookCard(b)).join('');
-
-            // 3. सोशल और पॉलिसी रेंडर
-            document.getElementById('social-container').innerHTML = socialLinks.map(s => 
-                `<a href="${s.link}" target="_blank" rel="noopener noreferrer" class="social-icon text-3xl ${s.color} bg-darkBg w-16 h-16 rounded-full flex items-center justify-center border border-gray-800 shadow-lg ${s.hoverColor}">
-                    <i class="fa-brands ${s.icon}"></i>
-                </a>`
-            ).join('');
-
-         document.getElementById("policy-container").innerHTML =
-policyItems.map(item => 
-  `<button onclick="openPage('${item.link}')" class="menu-link hover:text-gold transition-colors duration-300 bg-transparent border-none cursor-pointer">
-     ${item.name}
-   </button>`
-).join("");
-
-            // 4. साल अपडेट करना
-            document.getElementById('year').innerText = new Date().getFullYear();
-        };
-
-        // ================= 3. इंटरैक्टिव फंक्शन्स =================
-
-        // मोबाइल मेनू को खोलना/बंद करना
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // लाइक बटन
-        function toggleLike(btn) {
-            const icon = btn.querySelector('i');
-            if(icon.classList.contains('fa-regular')) {
-                icon.classList.replace('fa-regular', 'fa-solid');
-                icon.classList.replace('text-lg', 'text-xl');
-                btn.classList.add('text-red-500', 'border-red-500');
-            } else {
-                icon.classList.replace('fa-solid', 'fa-regular');
-                icon.classList.replace('text-xl', 'text-lg');
-                btn.classList.remove('text-red-500', 'border-red-500');
-            }
-        }
-
-        // शेयर बटन (कस्टम मैसेज बॉक्स)
-        function shareBook(title) {
-            // Alert की जगह एक छोटा सा कस्टम नोटिफिकेशन
-            const notif = document.createElement('div');
-            notif.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gold text-darkBg font-bold px-6 py-3 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.5)] z-50 animate-bounce transition-opacity duration-500';
-            notif.innerHTML = `<i class="fa-solid fa-check-circle mr-2"></i> दोस्त, '${title}' का लिंक कॉपी हो गया है!`;
-            document.body.appendChild(notif);
-            
-            setTimeout(() => {
-                notif.style.opacity = '0';
-                setTimeout(() => notif.remove(), 500);
-            }, 3000);
-        }
-
-        // स्क्रॉल करने पर नेवबार का बैकग्राउंड बदलना
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-[#050A1F]/95', 'shadow-[0_5px_20px_rgba(0,240,255,0.15)]');
-                nav.classList.remove('bg-[#050A1F]/80');
-            } else {
-                nav.classList.add('bg-[#050A1F]/80');
-                nav.classList.remove('bg-[#050A1F]/95', 'shadow-[0_5px_20px_rgba(0,240,255,0.15)]');
-            }
-        });
-        function toggleStory() {
-    const story = document.getElementById("fullStory");
-    const btn = event.target;
-
-    if (story.classList.contains("hidden")) {
-        story.classList.remove("hidden");
-        btn.innerText = "Read Less";
-    } else {
-        story.classList.add("hidden");
-        btn.innerText = "Read Full Story";
-    }
-}
-   function openPage(page) {
-    const container = document.getElementById("policy-page");
-    const content = document.getElementById("policy-content");
-
-    container.classList.remove("hidden");
-    container.classList.remove("opacity-0");
-
-    content.innerHTML = `
-        <button onclick="goBackHome()" class="mb-8 bg-gold text-darkBg px-6 py-2 rounded-full font-semibold hover:scale-105 transition">
-            ← Back to Home
-        </button>
-        ${pages[page]}
-    `;
-
-    setTimeout(() => {
-        container.classList.add("opacity-100");
-    }, 10);
-
-    container.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-    function goBackHome() {
-    const container = document.getElementById("policy-page");
-    container.classList.add("hidden");
-}
-        function searchSiteContent() {
-    const input = document.getElementById("siteSearch").value.toLowerCase();
-    const suggestionBox = document.getElementById("searchSuggestions");
-
-    if (!input) {
-        suggestionBox.classList.add("hidden");
-        suggestionBox.innerHTML = "";
-        return;
-    }
-
-    const matches = searchableContent.filter(item =>
-        item.toLowerCase().includes(input)
-    );
-
-    if (matches.length === 0) {
-        suggestionBox.innerHTML = `
-            <div class="px-5 py-4 text-gray-400">
-                No matching content found
-            </div>
-        `;
-        suggestionBox.classList.remove("hidden");
-        return;
-    }
-
-    suggestionBox.innerHTML = matches.map(item => `
-        <div onclick="goToSuggestion('${item}')"
-             class="px-5 py-4 hover:bg-white/10 cursor-pointer border-b border-white/5 text-white">
-            ${item}
-        </div>
-    `).join("");
-
-    suggestionBox.classList.remove("hidden");
-}
-        function goToSuggestion(item) {
-    const map = {
-        "माँ, मैं ठीक हूँ": "#featured-section",
-        "The Silent Mistake": "#new-arrivals-section",
-        "Pain to Power": "#new-arrivals-section",
-        "Lost in the Crowd": "#best-selling-section",
-        "Echoes of Truth": "#best-selling-section",
-        "About Author": "#about-author",
-        "Privacy Policy": "#contact",
-        "Terms & Conditions": "#contact",
-        "Copyright Policy": "#contact",
-        "Disclaimer": "#contact",
-        "Contact": "#contact",
-        "Jaggu Kashyap": "#about-author",
-        "ARTICH": "#home"
-    };
-
-    const section = document.querySelector(map[item]);
-
-    if (section) {
-        section.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-    document.getElementById("searchSuggestions").classList.add("hidden");
-    document.getElementById("siteSearch").value = item;
-}
-        function openStoryModal() {
-    document.getElementById("storyModal").classList.remove("hidden");
-}
-
-function closeStoryModal() {
-    document.getElementById("storyModal").classList.add("hidden");
-}
-        </script>
-    <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp,
-  getDocs,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCEvINbD2CnbU9SEZM_S4eCwltu2uYGiGg",
-  authDomain: "artich-community.firebaseapp.com",
-  projectId: "artich-community",
-  storageBucket: "artich-community.firebasestorage.app",
-  messagingSenderId: "896562849315",
-  appId: "1:896562849315:web:a01ccfe0570717a337f396"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-        let currentSlide = 0;
-
-window.startStorySlider = function () {
-    const slider = document.getElementById("storiesSlider");
-    const cards = slider.children;
-    let startX = 0;
-    let isDragging = false;
-
-    if (!cards.length) return;
-
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % cards.length;
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }, 4000);
-slider.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-});
-
-slider.addEventListener("touchmove", e => {
-    if (!isDragging) return;
-    
-    const moveX = e.touches[0].clientX;
-    const diff = startX - moveX;
-
-    if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-            currentSlide = (currentSlide + 1) % cards.length;
-        } else {
-            currentSlide = (currentSlide - 1 + cards.length) % cards.length;
-        }
-
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-        isDragging = false;
-    }
- });
-};        
-async function loadStories() {
-    const slider = document.getElementById("storiesSlider");
-
-    const q = query(
-        collection(db, "communityStories"),
-        orderBy("createdAt", "desc")
-    );
-
-    const snapshot = await getDocs(q);
-
-    slider.innerHTML = snapshot.docs.map(doc => {
-        const data = doc.data();
-
-        return `
-            <div class="story-card cursor-pointer" onclick="openFullStory('${doc.id}')">
-                <h3 class="text-2xl font-bold text-white mb-3">
-                    ${data.title}
-                </h3>
-
-                <p class="text-gray-100 mb-4 leading-relaxed">
-                    ${data.story.substring(0, 140)}...
-                </p>
-
-                <div class="border-t border-white/20 pt-4">
-                    <p class="text-yellow-300 font-semibold mb-3">
-                        सीख: ${data.learning}
-                    </p>
-
-<div class="flex gap-6 text-white text-lg">
-    <button onclick="event.stopPropagation(); likeStory('${doc.id}')">❤️ Like</button>
-    <button onclick="event.stopPropagation(); commentStory('${doc.id}')">💬 Comment</button>
-    <button onclick="event.stopPropagation(); shareStory('${doc.id}')">🔗 Share</button>
-</div>
-                </div>
-            </div>
-        `;
-    }).join("");
-
-    startStorySlider();
-}
-window.submitStory = async function () {
-    const title = document.getElementById("storyTitle").value.trim();
-    const story = document.getElementById("storyText").value.trim();
-    const learning = document.getElementById("storyLearning").value.trim();
-
-    if (!title || !story || !learning) {
-        alert("दोस्त, सभी fields भरना जरूरी है ❤️");
-        return;
-    }
-
-    try {
-        await addDoc(collection(db, "communityStories"), {
-            title,
-            story,
-            learning,
-            createdAt: serverTimestamp(),
-            approved: false
-        });
-
-        alert("तुम्हारी कहानी ARTICH तक पहुँच गई ✨");
-        loadStories();
-        closeStoryModal();
-
-        document.getElementById("storyTitle").value = "";
-        document.getElementById("storyText").value = "";
-        document.getElementById("storyLearning").value = "";
-
-    } catch (error) {
-        console.error(error);
-        alert("कुछ problem आई, फिर से try करो");
-    }
-};
-    window.openFullStory = async function(id) {
-    const snapshot = await getDocs(collection(db, "communityStories"));
-    const storyDoc = snapshot.docs.find(doc => doc.id === id);
-
-    if (!storyDoc) return;
-
-    const data = storyDoc.data();
-
-    document.getElementById("fullStoryContent").innerHTML = `
-    <h2 class="text-3xl font-bold text-white mb-4">${data.title}</h2>
-    <p class="text-gray-300 leading-relaxed mb-6">${data.story}</p>
-    <p class="text-gold font-semibold">सीख:</p>
-    <p class="text-gray-400 mb-6">${data.learning}</p>
-
-    <textarea autofocus
-        placeholder="अपना कमेंट लिखो..."
-        class="w-full mt-4 px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400"></textarea>
-`;
-
-    document.getElementById("fullStoryModal").classList.remove("hidden");
-};
-
-window.closeFullStory = function() {
-    document.getElementById("fullStoryModal").classList.add("hidden");
-}
-    loadStories();
-        window.likeStory = function(id) {
-    event.target.innerText = "💖 Liked";
-};
-
-window.commentStory = function(id) {
-    openFullStory(id);
-};
-
-window.shareStory = function(id) {
-    navigator.share({
-   title: "ARTICH Story",
-   text: "यह कहानी जरूर पढ़ो",
-   url: window.location.href
-})
-};
-</script>
-    <div id="storyModal" class="hidden fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
-    <div class="w-full max-w-2xl bg-darkCard rounded-3xl p-6 relative">
-        
-        <button onclick="closeStoryModal()" class="absolute top-4 right-4 text-white text-2xl">
-            ✕
-        </button>
-
-        <h2 class="text-3xl font-bold text-white mb-4 text-center">
-            Share Your Story
-        </h2>
-
-        <div class="space-y-5">
-            <input type="text" id="storyTitle"
-                placeholder="अपनी कहानी का टाइटल"
-                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400">
-
-            <textarea id="storyText" rows="5"
-                placeholder="अपनी कहानी लिखें..."
-                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400"></textarea>
-
-            <textarea id="storyLearning" rows="4"
-                placeholder="इस गलती से आपने क्या सीखा?"
-                class="w-full px-5 py-4 rounded-xl bg-[#111827] border border-white/10 text-white placeholder-gray-400"></textarea>
-
-            <button onclick="submitStory()"
-                class="w-full bg-gold text-darkBg font-bold py-4 rounded-xl hover:bg-yellow-400 transition">
-                Submit Your Story
+            <button>
+              <i class="fa-solid fa-heart"></i>
             </button>
+
+            <button>
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+
+          </div>
+
         </div>
+
+      </div>
+
+
+
+      <!-- BOOK CARD -->
+
+      <div class="book-card">
+
+        <div class="book-image">
+
+          <img src="images/book2.jpg" alt="">
+
+        </div>
+
+        <div class="book-content">
+
+          <h3>People Leave Quietly</h3>
+
+          <p>
+            Some memories never leave,
+            even when people do.
+          </p>
+
+          <div class="book-actions">
+
+            <a href="#" class="read-btn">
+              Read More
+            </a>
+
+            <a href="#" class="buy-btn">
+              Buy Now
+            </a>
+
+          </div>
+
+          <div class="book-icons">
+
+            <button>
+              <i class="fa-solid fa-heart"></i>
+            </button>
+
+            <button>
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-</div>
-    <div id="fullStoryModal" class="hidden fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center px-4">
-    <div class="max-w-2xl w-full bg-darkCard rounded-3xl p-6 relative">
-        <button onclick="closeFullStory()" class="absolute top-4 right-4 text-white text-2xl">✕</button>
-        <div id="fullStoryContent"></div>
+
+  </section>
+
+
+
+  <!-- ===================== -->
+  <!-- VIDEOS -->
+  <!-- ===================== -->
+
+  <section class="videos" id="videos">
+
+    <div class="section-heading">
+
+      <span>VIDEOS</span>
+
+      <h2>
+        Stories that feel too real.
+      </h2>
+
     </div>
-</div>
+
+    <div class="video-wrapper">
+
+      <div class="video-card">
+
+        <img src="images/video1.jpg" alt="">
+
+        <div class="video-overlay">
+
+          <h3>
+            You Will Regret After 10 Years...
+          </h3>
+
+          <a href="#">
+            Watch Now
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="video-card">
+
+        <img src="images/video2.jpg" alt="">
+
+        <div class="video-overlay">
+
+          <h3>
+            The City Took Everything...
+          </h3>
+
+          <a href="#">
+            Watch Now
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================== -->
+  <!-- JOURNEY -->
+  <!-- ===================== -->
+
+  <section class="journey" id="journey">
+
+    <div class="section-heading">
+
+      <span>JOURNEY</span>
+
+      <h2>
+        Every year changed something inside me.
+      </h2>
+
+    </div>
+
+
+
+    <div class="timeline">
+
+      <div class="timeline-box">
+        <span>2015</span>
+        <p>Surviving difficult nights and emotional pain.</p>
+      </div>
+
+      <div class="timeline-box">
+        <span>2021</span>
+        <p>Started understanding storytelling deeply.</p>
+      </div>
+
+      <div class="timeline-box">
+        <span>2024</span>
+        <p>Started creating emotional videos online.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================== -->
+  <!-- CONTACT -->
+  <!-- ===================== -->
+
+  <section class="contact" id="contact">
+
+    <div class="contact-container">
+
+      <h2>
+        If your story feels unheard...
+        maybe we can connect.
+      </h2>
+
+      <form>
+
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Your Email">
+
+        <textarea placeholder="Write your message..."></textarea>
+
+        <button type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================== -->
+  <!-- FOOTER -->
+  <!-- ===================== -->
+
+  <footer>
+
+    <div class="footer-links">
+
+      <a href="#">Disclaimer</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Copyright Policy</a>
+      <a href="#">Content Policy</a>
+      <a href="#">DMCA</a>
+
+    </div>
+
+    <p>
+      © 2026 ARTICH. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
 </body>
+
 </html>
