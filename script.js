@@ -112,3 +112,24 @@ shareButtons.forEach(button => {
   });
 
 });
+// =========================
+// ABOUT POPUP
+// =========================
+
+const aboutBtn = document.getElementById("aboutMeBtn");
+
+const aboutPopup = document.getElementById("aboutPopup");
+
+const closePopup = document.getElementById("closePopup");
+
+aboutBtn.addEventListener("click", () => {
+
+  aboutPopup.style.display = "flex";
+
+});
+
+closePopup.addEventListener("click", () => {
+
+  aboutPopup.style.display = "none";
+
+});
