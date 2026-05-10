@@ -133,3 +133,50 @@ closePopup.addEventListener("click", () => {
   aboutPopup.style.display = "none";
 
 });
+// =========================
+// POLICY POPUPS
+// =========================
+
+const popupLinks = {
+
+  privacyLink: "privacyPopup",
+
+  termsLink: "termsPopup",
+
+  copyrightLink: "copyrightPopup",
+
+  disclaimerLink: "disclaimerPopup",
+
+  contactLink: "contactPopup"
+
+};
+
+Object.keys(popupLinks).forEach(linkId => {
+
+  const link = document.getElementById(linkId);
+
+  const popup = document.getElementById(popupLinks[linkId]);
+
+  link.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    popup.style.display = "flex";
+
+  });
+
+});
+
+const closeButtons = document.querySelectorAll(".close-policy");
+
+closeButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const popupId = button.getAttribute("data-close");
+
+    document.getElementById(popupId).style.display = "none";
+
+  });
+
+});
