@@ -151,21 +151,25 @@ const popupLinks = {
 
 };
 
-Object.keys(popupLinks).forEach(linkId => {
+for (const linkId in popupLinks) {
 
   const link = document.getElementById(linkId);
 
   const popup = document.getElementById(popupLinks[linkId]);
 
-  link.addEventListener("click", (e) => {
+  if(link && popup){
 
-    e.preventDefault();
+    link.addEventListener("click", (e) => {
 
-    popup.style.display = "flex";
+      e.preventDefault();
 
-  });
+      popup.style.display = "flex";
 
-});
+    });
+
+  }
+
+}
 
 const closeButtons = document.querySelectorAll(".close-policy");
 
@@ -175,7 +179,13 @@ closeButtons.forEach(button => {
 
     const popupId = button.getAttribute("data-close");
 
-    document.getElementById(popupId).style.display = "none";
+    const popup = document.getElementById(popupId);
+
+    if(popup){
+
+      popup.style.display = "none";
+
+    }
 
   });
 
