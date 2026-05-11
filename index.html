@@ -541,19 +541,49 @@
         maybe we can connect.
       </h2>
 
-      <form>
+      <form action="https://formsubmit.co/jaggukashyap1995@gmail.com" method="POST">
 
-        <input type="text" placeholder="Your Name">
+  <input 
+    type="text" 
+    name="name" 
+    placeholder="Your Name"
+    required
+  >
 
-        <input type="email" placeholder="Your Email">
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Your Email"
+    required
+  >
 
-        <textarea placeholder="Write your message..."></textarea>
+  <textarea 
+    name="message" 
+    placeholder="Write your message..."
+    required
+  ></textarea>
 
-        <button type="submit">
-          Send Message
-        </button>
+  <!-- Disable Captcha -->
 
-      </form>
+  <input 
+    type="hidden" 
+    name="_captcha" 
+    value="false"
+  >
+
+  <!-- Redirect After Submit -->
+
+  <input 
+    type="hidden" 
+    name="_next" 
+    value="https://artich18.github.io/"
+  >
+
+  <button type="submit">
+    Send Message
+  </button>
+
+</form>
 
     </div>
 
