@@ -65,7 +65,20 @@ menuBtn.addEventListener("click", () => {
 
 });
 
+// AUTO CLOSE MENU WHEN CLICK OUTSIDE
 
+document.addEventListener("click", (e) => {
+
+  if(
+    !menuBtn.contains(e.target) &&
+    !navLinks.contains(e.target)
+  ){
+
+    navLinks.style.display = "none";
+
+  }
+
+});
 
 // =========================
 // LIKE BUTTON
