@@ -270,6 +270,7 @@ section{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
   gap:40px;
+  justify-content:center;
 }
 
 .book-card{
@@ -526,6 +527,15 @@ footer{
   .social-icons{
     justify-content:center;
   }
+  .books-grid{
+  grid-template-columns:1fr;
+  justify-items:center;
+ }
+
+.book-card{
+  width:100%;
+  max-width:360px;
+}
 
 }
 /* ===================== */
