@@ -185,15 +185,38 @@ section{
   justify-content:center;
   border-radius:50%;
   background:rgba(255,255,255,0.08);
-  color:#fff;
-  font-size:20px;
+  font-size:22px;
   transition:0.4s;
 }
 
+/* YOUTUBE */
+.social-icons a:nth-child(1){
+  color:#ff0000;
+}
+
+/* FACEBOOK */
+.social-icons a:nth-child(2){
+  color:#1877f2;
+}
+
+/* INSTAGRAM */
+.social-icons a:nth-child(3){
+  color:#e1306c;
+}
+
+/* TWITTER X */
+.social-icons a:nth-child(4){
+  color:#ffffff;
+}
+
+/* LINKEDIN */
+.social-icons a:nth-child(5){
+  color:#0a66c2;
+}
+
 .social-icons a:hover{
-  transform:translateY(-8px);
-  background:#60a5fa;
-  color:#000;
+  transform:translateY(-8px) scale(1.1);
+  background:rgba(255,255,255,0.12);
 }
 
 .hero-right{
