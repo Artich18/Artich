@@ -207,3 +207,65 @@ closeButtons.forEach(button => {
   };
 
 });
+// =========================
+// AI SEARCH SUGGESTIONS
+// =========================
+
+const aiSearch = document.getElementById("aiSearch");
+
+const suggestionsBox = document.getElementById("suggestions");
+
+const searchData = [
+
+  "Emotional stories",
+  "Sad memories",
+  "Heartbroken life",
+  "Motivational videos",
+  "Life struggles",
+  "Village life",
+  "Loneliness",
+  "Silent pain",
+  "Real experiences",
+  "Book stories"
+
+];
+
+aiSearch.addEventListener("keyup", () => {
+
+  let input = aiSearch.value.toLowerCase();
+
+  suggestionsBox.innerHTML = "";
+
+  if(input === ""){
+
+    suggestionsBox.style.display = "none";
+    return;
+
+  }
+
+  const filtered = searchData.filter(item =>
+    item.toLowerCase().includes(input)
+  );
+
+  filtered.forEach(item => {
+
+    const div = document.createElement("div");
+
+    div.innerText = item;
+
+    div.onclick = () => {
+
+      aiSearch.value = item;
+
+      suggestionsBox.style.display = "none";
+
+    };
+
+    suggestionsBox.appendChild(div);
+
+  });
+
+  suggestionsBox.style.display =
+  filtered.length ? "block" : "none";
+
+});
