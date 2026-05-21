@@ -208,90 +208,142 @@ closeButtons.forEach(button => {
 
 });
 // =========================
-// AI SEARCH SUGGESTIONS
+// AI SEARCH
 // =========================
 
-const aiSearch = document.getElementById("aiSearch");
+document.addEventListener("DOMContentLoaded", () => {
 
-const suggestionsBox = document.getElementById("suggestions");
+  const aiSearch =
+  document.getElementById("aiSearch");
 
-const searchData = [
+  const suggestionsBox =
+  document.getElementById("suggestions");
 
-  "Emotional stories",
-  "Sad memories",
-  "Heartbroken life",
-  "Motivational videos",
-  "Life struggles",
-  "Village life",
-  "Loneliness",
-  "Silent pain",
-  "Real experiences",
-  "Book stories"
+  const voiceBtn =
+  document.getElementById("voiceSearchBtn");
 
-];
+  const searchData = [
 
-aiSearch.addEventListener("keyup", () => {
+    "Emotional stories",
+    "Sad memories",
+    "Heartbroken life",
+    "Motivational videos",
+    "Life struggles",
+    "Village life",
+    "Loneliness",
+    "Silent pain",
+    "Real experiences",
+    "Book stories"
 
-  let input = aiSearch.value.toLowerCase();
+  ];
 
-  suggestionsBox.innerHTML = "";
+  // =====================
+  // AUTO SUGGESTIONS
+  // =====================
 
-  if(input === ""){
+  aiSearch.addEventListener("input", () => {
 
-    suggestionsBox.style.display = "none";
-    return;
+    const input =
+    aiSearch.value.toLowerCase();
 
-  }
+    suggestionsBox.innerHTML = "";
 
-  const filtered = searchData.filter(item =>
-    item.toLowerCase().includes(input)
-  );
-
-  filtered.forEach(item => {
-
-    const div = document.createElement("div");
-
-    div.innerText = item;
-
-    div.onclick = () => {
-
-      aiSearch.value = item;
+    if(input === ""){
 
       suggestionsBox.style.display = "none";
+      return;
 
-    };
+    }
 
-    suggestionsBox.appendChild(div);
+    const filtered =
+    searchData.filter(item =>
+      item.toLowerCase().includes(input)
+    );
+
+    filtered.forEach(item => {
+
+      const div =
+      document.createElement("div");
+
+      div.textContent = item;
+
+      div.addEventListener("click", () => {
+
+        aiSearch.value = item;
+
+        suggestionsBox.style.display = "none";
+
+      });
+
+      suggestionsBox.appendChild(div);
+
+    });
+
+    suggestionsBox.style.display =
+    filtered.length > 0 ? "block" : "none";
 
   });
 
-  suggestionsBox.style.display =
-  filtered.length ? "block" : "none";
+  // =====================
+  // CLICK OUTSIDE CLOSE
+  // =====================
+
+  document.addEventListener("click", (e) => {
+
+    if(
+      !aiSearch.contains(e.target) &&
+      !suggestionsBox.contains(e.target)
+    ){
+
+      suggestionsBox.style.display = "none";
+
+    }
+
+  });
+
+  // =====================
+  // VOICE SEARCH
+  // =====================
+
+  if(
+    'webkitSpeechRecognition' in window ||
+    'SpeechRecognition' in window
+  ){
+
+    const SpeechRecognition =
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition;
+
+    const recognition =
+    new SpeechRecognition();
+
+    recognition.lang = "en-US";
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    voiceBtn.addEventListener("click", () => {
+
+      recognition.start();
+
+    });
+
+    recognition.onresult = (event) => {
+
+      const transcript =
+      event.results[0][0].transcript;
+
+      aiSearch.value = transcript;
+
+    };
+
+  } else {
+
+    console.log(
+      "Speech Recognition Not Supported"
+    );
+
+  }
 
 });
-// =========================
-// VOICE SEARCH
-// =========================
-
-const voiceBtn = document.getElementById("voiceSearchBtn");
-
-const recognition =
-new(window.SpeechRecognition ||
-window.webkitSpeechRecognition)();
-
-recognition.lang = "en-US";
-
-voiceBtn.addEventListener("click", () => {
-
-  recognition.start();
-
-});
-
-recognition.onresult = (event) => {
-
-  const transcript =
-  event.results[0][0].transcript;
-
-  aiSearch.value = transcript;
-
-};
