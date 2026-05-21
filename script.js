@@ -208,7 +208,7 @@ closeButtons.forEach(button => {
 
 });
 // =========================
-// AI SEARCH
+// REAL WEBSITE SEARCH
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -219,32 +219,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const suggestionsBox =
   document.getElementById("suggestions");
 
-  const voiceBtn =
-  document.getElementById("voiceSearchBtn");
+  // WEBSITE SEARCH DATA
 
-  const searchData = [
+  const websiteData = [
 
-    "Emotional stories",
-    "Sad memories",
-    "Heartbroken life",
-    "Motivational videos",
-    "Life struggles",
-    "Village life",
-    "Loneliness",
-    "Silent pain",
-    "Real experiences",
-    "Book stories"
+    {
+      title:"About",
+      keywords:["about","story","jaggu","creator"],
+      link:"#about"
+    },
+
+    {
+      title:"Books",
+      keywords:["books","maa main theek hoon","emotional book"],
+      link:"#books"
+    },
+
+    {
+      title:"Videos",
+      keywords:["videos","motivation","emotional videos"],
+      link:"#videos"
+    },
+
+    {
+      title:"Journey",
+      keywords:["journey","2015","struggle","life"],
+      link:"#journey"
+    },
+
+    {
+      title:"Contact",
+      keywords:["contact","email","message"],
+      link:"#contact"
+    }
 
   ];
 
-  // =====================
-  // AUTO SUGGESTIONS
-  // =====================
+  // SEARCH INPUT
 
   aiSearch.addEventListener("input", () => {
 
     const input =
-    aiSearch.value.toLowerCase();
+    aiSearch.value.toLowerCase().trim();
 
     suggestionsBox.innerHTML = "";
 
@@ -256,20 +272,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const filtered =
-    searchData.filter(item =>
-      item.toLowerCase().includes(input)
+    websiteData.filter(item =>
+
+      item.title.toLowerCase().includes(input)
+
+      ||
+
+      item.keywords.some(keyword =>
+        keyword.includes(input)
+      )
+
     );
+
+    if(filtered.length === 0){
+
+      suggestionsBox.innerHTML = `
+        <div>No Results Found</div>
+      `;
+
+      suggestionsBox.style.display = "block";
+
+      return;
+
+    }
 
     filtered.forEach(item => {
 
       const div =
       document.createElement("div");
 
-      div.textContent = item;
+      div.innerText = item.title;
 
       div.addEventListener("click", () => {
 
-        aiSearch.value = item;
+        window.location.href = item.link;
 
         suggestionsBox.style.display = "none";
 
@@ -279,14 +315,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    suggestionsBox.style.display =
-    filtered.length > 0 ? "block" : "none";
+    suggestionsBox.style.display = "block";
 
   });
 
-  // =====================
-  // CLICK OUTSIDE CLOSE
-  // =====================
+  // OUTSIDE CLICK CLOSE
 
   document.addEventListener("click", (e) => {
 
@@ -301,49 +334,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  // =====================
-  // VOICE SEARCH
-  // =====================
+});
+// =========================
+// VOICE SEARCH
+// =========================
 
-  if(
-    'webkitSpeechRecognition' in window ||
-    'SpeechRecognition' in window
-  ){
+const voiceBtn =
+document.getElementById("voiceSearchBtn");
 
-    const SpeechRecognition =
-      window.SpeechRecognition ||
-      window.webkitSpeechRecognition;
+if (
+  'webkitSpeechRecognition' in window
+){
 
-    const recognition =
-    new SpeechRecognition();
+  const recognition =
+  new webkitSpeechRecognition();
 
-    recognition.lang = "en-US";
+  recognition.lang = "en-US";
 
-    recognition.continuous = false;
+  voiceBtn.addEventListener("click", () => {
 
-    recognition.interimResults = false;
+    recognition.start();
 
-    voiceBtn.addEventListener("click", () => {
+  });
 
-      recognition.start();
+  recognition.onresult = (event) => {
 
-    });
+    const transcript =
+    event.results[0][0].transcript;
 
-    recognition.onresult = (event) => {
+    aiSearch.value = transcript;
 
-      const transcript =
-      event.results[0][0].transcript;
-
-      aiSearch.value = transcript;
-
-    };
-
-  } else {
-
-    console.log(
-      "Speech Recognition Not Supported"
+    aiSearch.dispatchEvent(
+      new Event("input")
     );
 
-  }
+  };
 
-});
+}
