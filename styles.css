@@ -312,6 +312,8 @@ section{
   box-shadow:0 10px 30px rgba(0,0,0,0.25);
 
   z-index:999;
+  max-height:260px;
+  overflow-y:auto;
 }
 
 .search-suggestions div{
@@ -322,6 +324,20 @@ section{
 
 .search-suggestions div:hover{
   background:rgba(255,255,255,0.08);
+}
+/* CUSTOM SCROLLBAR */
+
+.search-suggestions::-webkit-scrollbar{
+  width:6px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb{
+  background:#60a5fa;
+  border-radius:20px;
+}
+
+.search-suggestions::-webkit-scrollbar-track{
+  background:transparent;
 }
 
 /* ===================== */
