@@ -242,12 +242,12 @@ section{
   position:relative;
   margin:35px 0;
   width:100%;
-  max-width:620px;
+  max-width:520px;
 }
 
 .ai-search-box input{
   width:100%;
-  padding:20px 70px 20px 25px;
+  padding:16px 65px 16px 22px;
 
   border:none;
   outline:none;
@@ -276,8 +276,8 @@ section{
 
   transform:translateY(-50%);
 
-  width:50px;
-  height:50px;
+  width:42px;
+  height:42px;
 
   border:none;
   border-radius:50%;
@@ -298,7 +298,8 @@ section{
 
   top:75px;
 
-  background:#07111f;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(18px);
 
   border-radius:20px;
 
@@ -307,6 +308,8 @@ section{
   display:none;
 
   border:1px solid rgba(255,255,255,0.08);
+  
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
 
   z-index:999;
 }
