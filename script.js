@@ -365,4 +365,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+// =========================
+// VOICE SEARCH
+// =========================
 
+const aiSearch =
+document.getElementById("aiSearch");
+
+const voiceBtn =
+document.getElementById("voiceSearchBtn");
+
+if (
+  'webkitSpeechRecognition' in window
+){
+
+  const recognition =
+  new webkitSpeechRecognition();
+
+  recognition.lang = "en-US";
+
+  recognition.continuous = false;
+
+  recognition.interimResults = false;
+
+  voiceBtn.addEventListener("click", () => {
+
+    recognition.start();
+
+  });
+
+  recognition.onresult = (event) => {
+
+    const transcript =
+    event.results[0][0].transcript;
+
+    aiSearch.value = transcript;
+
+    // AUTO TRIGGER SEARCH
+    aiSearch.dispatchEvent(
+      new Event("input")
+    );
+
+  };
+
+}
