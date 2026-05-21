@@ -219,41 +219,154 @@ document.addEventListener("DOMContentLoaded", () => {
   const suggestionsBox =
   document.getElementById("suggestions");
 
-  // WEBSITE SEARCH DATA
+  // =========================
+// FULL WEBSITE SEARCH
+// =========================
 
-  const websiteData = [
+document.addEventListener("DOMContentLoaded", () => {
 
-    {
-      title:"About",
-      keywords:["about","story","jaggu","creator"],
-      link:"#about"
-    },
+  const aiSearch =
+  document.getElementById("aiSearch");
 
-    {
-      title:"Books",
-      keywords:["books","maa main theek hoon","emotional book"],
-      link:"#books"
-    },
+  const suggestionsBox =
+  document.getElementById("suggestions");
 
-    {
-      title:"Videos",
-      keywords:["videos","motivation","emotional videos"],
-      link:"#videos"
-    },
+  // WEBSITE ALL TEXT ELEMENTS
 
-    {
-      title:"Journey",
-      keywords:["journey","2015","struggle","life"],
-      link:"#journey"
-    },
+  const searchableElements = [
 
-    {
-      title:"Contact",
-      keywords:["contact","email","message"],
-      link:"#contact"
-    }
+    ...document.querySelectorAll("h1"),
+    ...document.querySelectorAll("h2"),
+    ...document.querySelectorAll("h3"),
+    ...document.querySelectorAll("p"),
+    ...document.querySelectorAll("a"),
+    ...document.querySelectorAll("button"),
+    ...document.querySelectorAll("span")
 
   ];
+
+  aiSearch.addEventListener("input", () => {
+
+    const input =
+    aiSearch.value.toLowerCase().trim();
+
+    suggestionsBox.innerHTML = "";
+
+    if(input === ""){
+
+      suggestionsBox.style.display = "none";
+
+      return;
+
+    }
+
+    let matched = [];
+
+    searchableElements.forEach(element => {
+
+      const text =
+      element.innerText.trim();
+
+      if(
+
+        text.toLowerCase().includes(input)
+
+        &&
+
+        text.length > 0
+
+      ){
+
+        matched.push({
+
+          text:text,
+
+          element:element
+
+        });
+
+      }
+
+    });
+
+    // REMOVE DUPLICATES
+
+    const uniqueMatches =
+    matched.filter((item,index,self)=>
+
+      index === self.findIndex(t =>
+        t.text === item.text
+      )
+
+    );
+
+    // LIMIT RESULTS
+
+    uniqueMatches.slice(0,8).forEach(item => {
+
+      const div =
+      document.createElement("div");
+
+      // SHORT TEXT
+
+      div.innerText =
+      item.text.substring(0,60);
+
+      div.addEventListener("click", () => {
+
+        item.element.scrollIntoView({
+
+          behavior:"smooth",
+          block:"center"
+
+        });
+
+        suggestionsBox.style.display = "none";
+
+      });
+
+      suggestionsBox.appendChild(div);
+
+    });
+
+    if(uniqueMatches.length > 0){
+
+      suggestionsBox.style.display = "block";
+
+    } else {
+
+      suggestionsBox.innerHTML =
+      `<div>No Results Found</div>`;
+
+      suggestionsBox.style.display = "block";
+
+    }
+
+  });
+
+  // CLOSE DROPDOWN
+
+  document.addEventListener("click", (e) => {
+
+    if(
+
+      !aiSearch.contains(e.target)
+
+      &&
+
+      !suggestionsBox.contains(e.target)
+
+    ){
+
+      suggestionsBox.style.display = "none";
+
+    }
+
+  });
+
+});
+
+ 
 
   // SEARCH INPUT
 
@@ -296,28 +409,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    filtered.forEach(item => {
-
-      const div =
-      document.createElement("div");
-
-      div.innerText = item.title;
-
-      div.addEventListener("click", () => {
-
-        window.location.href = item.link;
-
-        suggestionsBox.style.display = "none";
-
-      });
-
-      suggestionsBox.appendChild(div);
-
-    });
-
-    suggestionsBox.style.display = "block";
-
-  });
 
   // OUTSIDE CLICK CLOSE
 
