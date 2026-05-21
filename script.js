@@ -208,18 +208,6 @@ closeButtons.forEach(button => {
 
 });
 // =========================
-// REAL WEBSITE SEARCH
-// =========================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const aiSearch =
-  document.getElementById("aiSearch");
-
-  const suggestionsBox =
-  document.getElementById("suggestions");
-
-  // =========================
 // FULL WEBSITE SEARCH
 // =========================
 
@@ -230,6 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const suggestionsBox =
   document.getElementById("suggestions");
+
+  const voiceBtn =
+  document.getElementById("voiceSearchBtn");
 
   // WEBSITE ALL TEXT ELEMENTS
 
@@ -244,6 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ...document.querySelectorAll("span")
 
   ];
+
+  // =====================
+  // LIVE SEARCH
+  // =====================
 
   aiSearch.addEventListener("input", () => {
 
@@ -300,51 +295,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     );
 
-    // LIMIT RESULTS
+    // CLEAR OLD RESULTS
 
-    uniqueMatches.slice(0,8).forEach(item => {
+    suggestionsBox.innerHTML = "";
 
-      const div =
-      document.createElement("div");
-
-      // SHORT TEXT
-
-      div.innerText =
-      item.text.substring(0,60);
-
-      div.addEventListener("click", () => {
-
-        item.element.scrollIntoView({
-
-          behavior:"smooth",
-          block:"center"
-
-        });
-
-        suggestionsBox.style.display = "none";
-
-      });
-
-      suggestionsBox.appendChild(div);
-
-    });
+    // SHOW RESULTS
 
     if(uniqueMatches.length > 0){
 
-      suggestionsBox.style.display = "block";
+      uniqueMatches.slice(0,8).forEach(item => {
+
+        const div =
+        document.createElement("div");
+
+        div.innerText =
+        item.text.substring(0,60);
+
+        div.addEventListener("click", () => {
+
+          item.element.scrollIntoView({
+
+            behavior:"smooth",
+            block:"center"
+
+          });
+
+          suggestionsBox.style.display = "none";
+
+        });
+
+        suggestionsBox.appendChild(div);
+
+      });
 
     } else {
 
       suggestionsBox.innerHTML =
       `<div>No Results Found</div>`;
 
-      suggestionsBox.style.display = "block";
-
     }
+
+    suggestionsBox.style.display = "block";
 
   });
 
+  // =====================
   // CLOSE DROPDOWN
+  // =====================
 
   document.addEventListener("click", (e) => {
 
@@ -364,48 +361,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
+  // =====================
+  // VOICE SEARCH
+  // =====================
+
+  if(
+    'webkitSpeechRecognition' in window
+  ){
+
+    const recognition =
+    new webkitSpeechRecognition();
+
+    recognition.lang = "en-US";
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    voiceBtn.addEventListener("click", () => {
+
+      recognition.start();
+
+    });
+
+    recognition.onresult = (event) => {
+
+      const transcript =
+      event.results[0][0].transcript;
+
+      aiSearch.value = transcript;
+
+      // AUTO SEARCH TRIGGER
+
+      aiSearch.dispatchEvent(
+        new Event("input")
+      );
+
+    };
+
+  }
+
 });
-// =========================
-// VOICE SEARCH
-// =========================
-
-const aiSearch =
-document.getElementById("aiSearch");
-
-const voiceBtn =
-document.getElementById("voiceSearchBtn");
-
-if (
-  'webkitSpeechRecognition' in window
-){
-
-  const recognition =
-  new webkitSpeechRecognition();
-
-  recognition.lang = "en-US";
-
-  recognition.continuous = false;
-
-  recognition.interimResults = false;
-
-  voiceBtn.addEventListener("click", () => {
-
-    recognition.start();
-
-  });
-
-  recognition.onresult = (event) => {
-
-    const transcript =
-    event.results[0][0].transcript;
-
-    aiSearch.value = transcript;
-
-    // AUTO TRIGGER SEARCH
-    aiSearch.dispatchEvent(
-      new Event("input")
-    );
-
-  };
-
-}
