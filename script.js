@@ -269,3 +269,29 @@ aiSearch.addEventListener("keyup", () => {
   filtered.length ? "block" : "none";
 
 });
+// =========================
+// VOICE SEARCH
+// =========================
+
+const voiceBtn = document.getElementById("voiceSearchBtn");
+
+const recognition =
+new(window.SpeechRecognition ||
+window.webkitSpeechRecognition)();
+
+recognition.lang = "en-US";
+
+voiceBtn.addEventListener("click", () => {
+
+  recognition.start();
+
+});
+
+recognition.onresult = (event) => {
+
+  const transcript =
+  event.results[0][0].transcript;
+
+  aiSearch.value = transcript;
+
+};
